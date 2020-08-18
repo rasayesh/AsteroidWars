@@ -1,9 +1,9 @@
 class Player {
     constructor() {
         // sound vars
-        this.spaceShipExplodeSound = new Howl({
-            src: ['/asteroid_game/sounds/ship_explode.mp3'],
-        });
+        this.spaceShipExplodeSound = new Howl({ src: ['/asteroid_game/sounds/ship_explode.mp3'] });
+
+        // add enemy intro music
 
         // general vars
         this.isAlive = false;
@@ -11,6 +11,8 @@ class Player {
         this.y = window.innerHeight / 2;
         this.width = parseInt($('#player')[0].width);
         this.height = parseInt($('#player')[0].height);
+
+        // position
         this.verticalVelocity = 0;
         this.horizontalVelocity = 0;
         this.angle = 0; //radians

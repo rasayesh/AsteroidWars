@@ -60,14 +60,18 @@ function cycleGame() {
             startTime = new Date();
             timeBeginflag = false;
         }
-
         if (!model.gameOver) {
-            controller.updatePlayerPosition();
-            controller.updateBullets();
-            controller.updateAsteroidPosition();
-            controller.checkSpaceShipCrash();
-            controller.checkAsteroidIsDestroyed();
-            controller.breakHitAsteroids();
+            // update movement
+            controller.updateEnemyEvent(minutes); // check if the enemy spaceship should be spawned (happens every 1 minute)
+            controller.updatePlayerPosition(); // update player x & y
+            controller.updateEnemyPosition(); // update enemy x & y
+            controller.updatePlayerBullets(); // update player bullet x & y
+            controller.updateAsteroidPosition(); // update asteroid x & y
+            // check destroyed conditions
+            controller.updatePlayerDestroyed(); // check if player destroyed (remove)
+            controller.updateEnemyDestroyed(); // check if enemy asteroid destroyed (remove)
+            controller.updateAsteroidDestroyed(); // check if asteroid has been destroyed (remove)
+            controller.updateDeadEnemy();
             controller.asteroidsAllGoneEvent();
             if (respawn && !model.player.isAlive) {
                 respawn = false;
@@ -146,19 +150,28 @@ function initializeGame() {
 
 /* draw an image onto the canvas */
 function populateCanvas() {
-    postTime();
-    postLives();
-    postScore();
+    postTime(); // draw current game time
+    postLives(); // draw remaining lives
+    postScore(); // draw score
+
+    // image variables
     let playerImg = $('#player')[0];
     let thrustImg = $('#playerThrust')[0];
+    let enemy = $('#enemy')[0];
     let bullet = $('#bullet')[0];
     let asteroidLargeImg = $('#asteroidLarge')[0];
     let asteroidMediumImg = $('#asteroidMedium')[0];
     let asteroidSmallImg = $('#asteroidSmall')[0];
+
+    // player x & y position
     let playerX = model.player.x + (model.player.width / 2);
     let playerY = model.player.y + (model.player.height / 2);
+
+    // texture options
     ctx.imageSmoothingEnabled = true; // smooths images when enlarged
     ctx.imageSmoothingQuality = 'high'; // smooths images when enlarged
+
+    // draw player, player thrust, player spawn point, or game start
     if (engineBurst && model.player.isAlive) rotateAndDrawImage(thrustImg, playerX, playerY, model.player.angle);
     else if (model.player.isAlive) rotateAndDrawImage(playerImg, playerX, playerY, model.player.angle);
     else if (!model.player.isalive && !firstSpawnFlag && gameBegun && !model.gameOver) {
@@ -180,13 +193,27 @@ function populateCanvas() {
         ctx.globalAlpha = 0.5;
         ctx.fill();
     }
-    for (let j = 0; j < model.bulletsOnScreen; j++) {
+
+    // draw enemyship/s on canvas
+    for (let k = 0; k < model.enemyArray.length; k++) {
         ctx.beginPath();
-        let bulletX = model.bulletsArray[j].x;
-        let bulletY = model.bulletsArray[j].y;
-        let angle = model.bulletsArray[j].angle;
+        console.log('drawing enemy');
+        let enemyX = model.enemyArray[k].x;
+        let enemyY = model.enemyArray[k].y;
+        rotateAndDrawImage(enemy, enemyX, enemyY, 0);
+    }
+
+
+    // draw all the bullets to canvas
+    for (let j = 0; j < model.playerBulletsOnScreen; j++) {
+        ctx.beginPath();
+        let bulletX = model.playerBulletsArray[j].x;
+        let bulletY = model.playerBulletsArray[j].y;
+        let angle = model.playerBulletsArray[j].angle;
         rotateAndDrawImage(bullet, bulletX, bulletY, angle);
     }
+
+    // draw all the asteroids to canvas
     for (let i = 0; i < model.asteroidCount; i++) {
         let asteroidX = model.asteroidArray[i].x;
         let asteroidY = model.asteroidArray[i].y;
