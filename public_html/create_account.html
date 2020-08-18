@@ -1,0 +1,52 @@
+<!-- 
+/**
+ * @author Reza Munoz-Asayesh
+ * @file create_account.html 
+ * @project Asteroid Miners
+ * @description This program, contains the content for the create_account page,
+ * of the asteroid website.
+ * 
+ */
+ -->
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='./style/create_account.css'>
+    <script src='./js/jquery.min.js'></script>
+    <script src='./js/create_account.js'></script>
+    <title>createAccount</title>
+</head>
+
+<body>
+    <div id="background">
+        <div id="inputBar">
+            <div id="inputBarContent">
+                <!-- header/title -->
+                <div id='header'>
+                    <h1 id='headingTitle'>Asteroid</h1>
+                </div>
+                <!-- create account -->
+                <div>
+                    <h2>Create Account</h2>
+                    <br/>
+                    <input id='username' placeholder='username' type='text'>
+                    <br/>
+                    <br/>
+                    <input id='password' type='password' placeholder='Password'>
+                    <br/>
+                    <br/>
+                    <input id='confirmPassword' type='password' placeholder='Confirm Password'>
+                    <br/>
+                    <br/>
+                    <div id="passwordDontMatchError"></div>
+                    <input class="button" type='button' value='finish' onclick='validatePassword();'>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

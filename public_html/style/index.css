@@ -1,0 +1,82 @@
+/**
+ * @author Reza Munoz-Asayesh
+ * @file index.css 
+ * @project Asteroid Miners
+ * Description: This is the css file for styling of index.html. This file is for 
+ * creating the styling that will give the html divs positioning, color, dimension etc.
+ * 
+ */
+
+
+/* format page */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#background {
+    position: fixed;
+    color: orange;
+    background-image: url("/asteroid_game/graphics/backgrounds/test2.png");
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#header {
+    font-size: 24pt;
+}
+
+#inputBar {
+    position: fixed;
+    background-color: black;
+    height: 33%;
+    width: 100%;
+    top: 32%;
+    min-height: 380px;
+}
+
+#inputBarContent {
+    position: absolute;
+    width: 33%;
+    left: 34%;
+    text-align: center;
+}
+
+#username,
+#password {
+    font-size: larger;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: steelblue;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+}
+
+.button:hover {
+    background-color: rgb(44, 109, 163);
+}
+
+.button:active {
+    background-color: rgb(44, 109, 163);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#incorrectCredentialsError {
+    color: red;
+}

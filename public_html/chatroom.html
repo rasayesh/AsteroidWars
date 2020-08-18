@@ -1,0 +1,41 @@
+<!-- 
+/**
+ * @author Reza Munoz-Asayesh
+ * @file chatroom.html 
+ * @project Asteroid Miners
+ * @description This program, contains the content for the chatroom page,
+ * of the asteroid website.
+ * 
+ */
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style/chatroom.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/chatroom.js"></script>
+    <title>chatroom</title>
+</head>
+
+<body>
+    <!-- Output Section -->
+    <div id="outputSection">
+        <!-- div that messages go into -->
+        <div id="messages"></div>
+    </div>
+    <!-- Input Section-->
+    <div id="inputSection">
+        <!-- Message -->
+        <label class="textInput" for="messageInput">Message</label>
+        <input class="textInput" id="messageInput" type="text">
+        <br/>
+        <!-- Send Button -->
+        <input id="sendButton" class="button" type="button" value="Send Message" onclick="postToChat();">
+        <br/>
+    </div>
+</body>
+
+</html>

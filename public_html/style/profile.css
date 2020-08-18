@@ -1,0 +1,66 @@
+/**
+ * @author Reza Munoz-Asayesh
+ * @file profile.css 
+ * @project Asteroid Miners
+ * Description: This is the css file for styling of profile.html. This file is for 
+ * creating the styling that will give the html divs positioning, color, dimension etc.
+ * 
+ */
+
+
+/* format page */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#background {
+    position: fixed;
+    color: orange;
+    background-image: url("/asteroid_game/graphics/backgrounds/test2.png");
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#header {
+    font-size: 24pt;
+}
+
+#outputBar {
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    background-color: black;
+    height: 80%;
+    width: 100%;
+    top: 10%;
+}
+
+#profile {
+    text-align: left;
+}
+
+#userGameHistory {
+    text-align: center;
+    font-size: 14pt;
+    padding: 20px;
+    overflow: auto;
+}
+
+table,
+th,
+td {
+    border: 1px solid orange;
+    font-size: 12pt;
+    padding: 10px;
+    border-collapse: collapse;
+}
+
+table {
+    margin: 0 auto;
+}

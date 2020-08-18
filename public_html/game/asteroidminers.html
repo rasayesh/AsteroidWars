@@ -1,0 +1,85 @@
+<!-- 
+/**
+ * @author Reza Munoz-Asayesh
+ * @file game_index.html 
+ * @project Asteroid Miners
+ * @description This program, contains the content for the asteroid game,
+ * of the asteroid website. 
+ * 
+ */
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style/asteroidminers.css" />
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/howler.min.js"></script>
+    <script src="./js/model.js"></script>
+    <script src="./js/controller.js"></script>
+    <script src="./js/player.js"></script>
+    <script src="./js/asteroid.js"></script>
+    <script src="./js/bullet.js"></script>
+    <script src="./js/view.js"></script>
+    <title>Asteroid Miners</title>
+</head>
+
+<body>
+    <!-- start window -->
+    <div class="infoWindow" id="startWindow">
+        <input class="button" id='start' value="Play" type="button" onclick="startGame();">
+        <input class="button" id='directions' value="Help" type="button" onclick="showDirections();">
+        <input class="button" id='backToMenu' value="Back to Menu" type="button" onclick="backToMenu();">
+    </div>
+
+    <!-- game stats -->
+    <div class="infoWindow" id="gameStats">
+        <h1 class="stat" id="stat_heading">STATS SAVED!</h1>
+        <div class="stat" id="user_stat"></div>
+        <div class="stat" id="time_stat"></div>
+        <div class="stat" id="score_stat"></div>
+        <div class="stat" id="asteroidDest_stat"></div>
+        <div class="stat" id="asteroidSpwn_stat"></div>
+        <input id='next' value="next" type="button" onclick="gameOverWindow();">
+    </div>
+
+    <!-- game over window -->
+    <div class="infoWindow" id="gameOverWindow">
+        <h1>Game Over</h1>
+        <input class="button" id='start' value="Try Again" type="button" onclick="initializeGame();">
+        <input class="button" id='directions' value="Help" type="button" onclick="showDirections();">
+        <input class="button" value="Stats" type="button" onclick="showGameStats();">
+        <input class="button" id='backToMenu' value="Back to Menu" type="button" onclick="backToMenu();">
+    </div>
+
+    <div id="pause">
+        <h1 id="pauseMessage">GAME PAUSED</h1>
+    </div>
+
+    <!-- time /current player score / # lives left -->
+    <div id="heading">
+        <span id="timeElapsed"></span>
+        <span id="scoreOuter">Score:<span id="scoreInner"></span></span>
+        <span id="countLife"></span>
+    </div>
+
+    <!-- directions picture -->
+    <div id="displayDirections">
+        <img id="directionsPic" src="./graphics/directions/directions.png" alt="directions">
+        <input class="button" id='doneDirections' value="Done" type="button" onclick="exitDirections()">
+    </div>
+
+    <!-- graphics used in game -->
+    <canvas id="primaryStage"></canvas>
+    <img src="./graphics/spacecraft/spacecraft.png" id="player" width="80" height="40" alt="playerImg" />
+    <img src="./graphics/enemy/enemy_spacecraft.PNG" id="enemy" width="160" height="80" alt="enemyImg" />
+    <img src="./graphics/spacecraft/thrust.png" id="playerThrust" width="80" height="40" alt="spaceCraftThrustImg" />
+    <img src="./graphics/spacecraft/bullet.png" id="bullet" width="40" height="7" alt="bullet" />
+    <img src="./graphics/asteroids/asteroid_large.png" id="asteroidLarge" width="200" height="200" alt="asteroidLrgImg" />
+    <img src="./graphics/asteroids/asteroid_medium.png" id="asteroidMedium" width="100" height="100" alt="asteroidMedImg" />
+    <img src="./graphics/asteroids/asteroid_small.png" id="asteroidSmall" width="30" height="30" alt="asteroidSmlImg" />
+</body>
+
+</html>

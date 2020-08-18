@@ -1,0 +1,97 @@
+/**
+ * @author Reza Munoz-Asayesh
+ * @file chatroom.css 
+ * @project Asteroid Miners
+ * Description: This is the css file for styling of chatroom.html. This file is for 
+ * creating the styling that will give the html divs positioning, color, dimension etc.
+ * 
+ */
+
+
+/* format page */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Courier New', Courier, monospace;
+    color: orange;
+}
+
+
+/* split page into two divs */
+
+#outputSection {
+    background-color: black;
+    position: fixed;
+    height: 70%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    font-size: large;
+}
+
+#inputSection {
+    background-color: grey;
+    border-top: solid steelblue 6px;
+    position: fixed;
+    height: 30%;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+}
+
+
+/* style labels and inputs */
+
+.textInput {
+    font-size: 16pt;
+    display: inline-block;
+    text-align: right;
+    width: 32%;
+    margin-top: 40px;
+    color: black;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: steelblue;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+    margin-top: 40px;
+    margin-left: 40%;
+    /* margin: 30px auto;
+    display: block; */
+}
+
+.button:hover {
+    background-color: rgb(44, 109, 163);
+}
+
+.button:active {
+    background-color: rgb(44, 109, 163);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#messageInput {
+    text-align: left;
+}
+
+label {
+    color: whitesmoke;
+}
+
+#messages {
+    color: orange;
+    overflow: auto;
+    margin: 30px;
+    height: 93%;
+}

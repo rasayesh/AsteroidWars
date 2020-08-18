@@ -1,0 +1,49 @@
+<!-- 
+/**
+ * @author Reza Munoz-Asayesh
+ * @file profile.html 
+ * @project Asteroid Miners
+ * @description This program, contains the page content for the profile page,
+ * of the asteroid website.
+ * 
+ */
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style/profile.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/profile.js"></script>
+    <title>profile</title>
+</head>
+
+<body>
+    <div id="background">
+        <div id="outputBar">
+            <!-- header/title -->
+            <div id='header'>
+                <h1 id='headingTitle'>Asteroid</h1>
+            </div>
+            <h2>User Profile</h2>
+            <br/>
+            <div id="profile">
+                <h2>User: <span id="username"></span></h2>
+                <br/>
+                <h2>Account Creation Date: <span id="accountCreationDate"></span></h2>
+                <br/>
+                <h2>Game History (by Date oldest->newest):</h2>
+                <div id="userGameHistory">
+                    <table id="table">
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
