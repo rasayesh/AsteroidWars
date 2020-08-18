@@ -14,6 +14,9 @@ class Enemy {
         // position
         this.verticalVelocity = 0;
         this.horizontalVelocity = -.5;
+
+        // ammo
+        this.ammunition = [];
     }
 
     enemyDied() {

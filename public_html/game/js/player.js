@@ -3,8 +3,6 @@ class Player {
         // sound vars
         this.spaceShipExplodeSound = new Howl({ src: ['/asteroid_game/sounds/ship_explode.mp3'] });
 
-        // add enemy intro music
-
         // general vars
         this.isAlive = false;
         this.x = window.innerWidth / 2;
@@ -16,6 +14,9 @@ class Player {
         this.verticalVelocity = 0;
         this.horizontalVelocity = 0;
         this.angle = 0; //radians
+
+        // ammo
+        this.ammunition = [];
     }
 
     engineBurst() {

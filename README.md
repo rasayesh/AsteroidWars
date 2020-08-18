@@ -22,8 +22,7 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
 
 ## Future TODOS
 
-- [ ] asteroids break on impact with spaceship
-- [ ] add randomly appearing enemy spaceship
+- [X] add enemy spaceship appearing every 1 min
 - [ ] add health to enemy ship (takes x amount of shots to destroy) flash red on hit.
 - [ ] add space enemy spaceship thrust pic 
 - [ ] add enemy spaceship  
@@ -34,8 +33,9 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
 - [ ] make asteroids bounce off each other
 - [ ] on asteroid death add a drop (money/resource...)
 - [ ] change game economy small/med/lrg asteroids & enemy bounty
-- [ ] create more of an "asteroid miner" theme (change score to resources/income)
+- [ ] create more of an "asteroid wars" theme (change score to resources/income)
 - [ ] update Player schema to store new data about enemy ships (enemy killed / total enemy spawned) and add rounds
+- [ ] reduce global sound volume
 - [ ]  add ability to change ordering in both highscores menu and profile menu<br/>
       - 'high scores' to 'All scores'<br/>
       - highest to lowest (score)<br/>

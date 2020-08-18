@@ -71,8 +71,7 @@ function cycleGame() {
             controller.updatePlayerDestroyed(); // check if player destroyed (remove)
             controller.updateEnemyDestroyed(); // check if enemy asteroid destroyed (remove)
             controller.updateAsteroidDestroyed(); // check if asteroid has been destroyed (remove)
-            controller.updateDeadEnemy();
-            controller.asteroidsAllGoneEvent();
+            controller.asteroidsAllGoneEvent(); // if asteroids gone, initialize next round
             if (respawn && !model.player.isAlive) {
                 respawn = false;
                 controller.respawn();
@@ -82,13 +81,12 @@ function cycleGame() {
             if (engineBurst && model.player.isAlive) controller.engineBurst();
             if (turnLeft && model.player.isAlive) controller.turnLeft();
             if (turnRight && model.player.isAlive) controller.turnRight();
-            if (fireCannon && model.player.isAlive) fireCannonSound.play()
+            if (fireCannon && model.player.isAlive) fireCannonSound.play();
             if (fireCannon && model.player.isAlive) controller.fireCannon();
             fireCannon = false;
             resetStage(); // clear
             populateCanvas(); // update
         }
-
         if (model.gameOver && !displayedStats) displayStats();
     }
 
@@ -205,11 +203,11 @@ function populateCanvas() {
 
 
     // draw all the bullets to canvas
-    for (let j = 0; j < model.playerBulletsOnScreen; j++) {
+    for (let j = 0; j < model.player.ammunition.length; j++) {
         ctx.beginPath();
-        let bulletX = model.playerBulletsArray[j].x;
-        let bulletY = model.playerBulletsArray[j].y;
-        let angle = model.playerBulletsArray[j].angle;
+        let bulletX = model.player.ammunition[j].x;
+        let bulletY = model.player.ammunition[j].y;
+        let angle = model.player.ammunition[j].angle;
         rotateAndDrawImage(bullet, bulletX, bulletY, angle);
     }
 

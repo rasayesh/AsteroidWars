@@ -31,10 +31,6 @@ class Model {
         this.asteroidCount = 2; // current asteroids on map
         this.asteroidArray = []; // array of asteroid objects 
         this.initializeAsteroids();
-
-        // player bullets 
-        this.playerBulletsOnScreen = 0;
-        this.playerBulletsArray = [];
     }
 
     initializeAsteroids() {
