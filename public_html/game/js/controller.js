@@ -27,8 +27,9 @@ class Controller {
     turnRight() { model.player.turnRight(); }
     engineBurst() { model.player.engineBurst(); }
 
-    fireCannon() {
+    firePlayerCannon() {
         let newBullet = new Bullet();
+        newBullet.isPlayerBullet = true;
         newBullet.x = model.player.x + (model.player.width / 2);
         newBullet.y = model.player.y + (model.player.height / 2);
         newBullet.verticalVelocity = model.player.verticalVelocity;
@@ -43,7 +44,7 @@ class Controller {
     updateAsteroidPosition() { for (let i = 0; i < model.asteroidCount; i++) this.updatePosition(model.asteroidArray[i]); }
 
     // updates the position of the given object on the canvas based off of the 
-    // objects velocity and angle.
+    // objects velocity and angle
     updatePosition(object) {
         object.x += object.horizontalVelocity;
         object.y += object.verticalVelocity;
@@ -56,7 +57,7 @@ class Controller {
     updatePlayerBullets() {
         for (let i = 0; i < model.player.ammunition.length; i++) {
             if (model.player.ammunition[i].rangeTravelled >= model.player.ammunition[i].range) {
-                model.player.ammunition.splice(i, 1); // remove old asteroid.
+                model.player.ammunition.splice(i, 1); // remove old asteroid
             } else {
                 let shipDegree = (model.player.ammunition[i].angle * 180) / Math.PI;
                 while (shipDegree > 360) { shipDegree -= 360; }
@@ -125,8 +126,8 @@ class Controller {
                         let size = 'medium';
                         this.makeNewAsteroid(x, y, width, height, vertVelocity, horzVelocity, angle, size);
                     }
-                    model.asteroidArray.splice(asteroid, 1); // remove old asteroid.
-                    model.asteroidExplodeSound.play();
+                    model.asteroidArray[asteroid].asteroidExplodeSound.play();
+                    model.asteroidArray.splice(asteroid, 1); // remove old asteroid
                     model.asteroidCount--;
                     model.totalLargeAsteroidsDestroyed += 1;
                     model.totalAsteroidsDestroyed += 1
@@ -145,15 +146,15 @@ class Controller {
                         let size = 'small';
                         this.makeNewAsteroid(x, y, width, height, vertVelocity, horzVelocity, angle, size);
                     }
+                    model.asteroidArray[asteroid].asteroidExplodeSound.play();
                     model.asteroidArray.splice(asteroid, 1); // remove old asteroid
-                    model.asteroidExplodeSound.play();
                     model.asteroidCount--;
                     model.totalMediumAsteroidsDestroyed += 1;
                     model.totalAsteroidsDestroyed += 1
                     model.playerScore += 50;
                 } else if (model.asteroidArray[asteroid].small) {
+                    model.asteroidArray[asteroid].asteroidExplodeSound.play();
                     model.asteroidArray.splice(asteroid, 1);
-                    model.asteroidExplodeSound.play();
                     model.asteroidCount--;
                     model.totalSmallAsteroidsDestroyed += 1;
                     model.totalAsteroidsDestroyed += 1
@@ -163,7 +164,7 @@ class Controller {
         }
     }
 
-    // checks if the player's ship has crashed into any of the asteroids.
+    // checks if the player's ship has crashed into any of the asteroids or player has been shot by enemy spaceship
     updatePlayerDestroyed() {
         for (let i = 0; i < model.asteroidCount; i++) {
             let asteroidXRadiusRight = model.asteroidArray[i].x + (model.asteroidArray[i].width / 2.75);
@@ -186,7 +187,7 @@ class Controller {
         }
     }
 
-    // check if all the asteroids are gone, then respawn more asteroids by 1.5x previous amount.
+    // check if all the asteroids are gone, then respawn more asteroids by 1.5x previous amount
     asteroidsAllGoneEvent() {
         if (model.asteroidCount === 0) {
             model.staticAsteroidCount *= 1.5;
@@ -208,22 +209,32 @@ class Controller {
         }
     }
 
-    // check if a bullet or asteroid has hit enemy space ship and thus destroyed it.
+    // check if a bullet or asteroid has hit enemy space ship and thus destroyed it
     updateEnemyDestroyed() {
+        // reset enemy is hit
+        for (let enemy = 0; enemy < model.enemyArray.length; enemy++) {
+            model.enemyArray[enemy].isHit = false;
+        }
+
         // check if player killed enemy
         for (let i = 0; i < model.enemyArray.length; i++) {
-            let enemyShipXRadiusRight = model.enemyArray[i].x + (model.enemyArray[i].width / 2.5);
-            let enemyShipXRadiusLeft = model.enemyArray[i].x - (model.enemyArray[i].width / 2.5);
-            let enemyShipYRadiusDown = model.enemyArray[i].y + (model.enemyArray[i].height / 2.5);
-            let enemyShipXRadiusUp = model.enemyArray[i].y - (model.enemyArray[i].height / 2.5);
+            let enemyShip = model.enemyArray[i];
+            let enemyShipXRadiusRight = enemyShip.x + (enemyShip.width / 2.5);
+            let enemyShipXRadiusLeft = enemyShip.x - (enemyShip.width / 2.5);
+            let enemyShipYRadiusDown = enemyShip.y + (enemyShip.height / 2.5);
+            let enemyShipXRadiusUp = enemyShip.y - (enemyShip.height / 2.5);
             for (let j = 0; j < model.player.ammunition.length; j++) {
                 let bulletX = model.player.ammunition[j].x;
                 let bulletY = model.player.ammunition[j].y;
                 if ((bulletX <= enemyShipXRadiusRight && bulletX >= enemyShipXRadiusLeft) &&
                     bulletY <= enemyShipYRadiusDown && bulletY >= enemyShipXRadiusUp) {
-                    model.enemyArray[i].isAlive = false; // set enemy to dead
                     model.player.ammunition[j].rangeTravelled = model.player.ammunition[j].range; // get rid of bullet 
-                    model.enemyArray[i].enemyDied();
+                    if (enemyShip.health === 0) enemyShip.enemyDied();
+                    else {
+                        enemyShip.health--;
+                        console.log('enemy ship shot health : ', enemyShip.health);
+                        enemyShip.isHit = true;
+                    }
                 }
             }
         }
@@ -234,12 +245,17 @@ class Controller {
             let asteroidYRadiusDown = model.asteroidArray[i].y + (model.asteroidArray[i].height / 2.75);
             let asteroidYRadiusUp = model.asteroidArray[i].y - (model.asteroidArray[i].height / 2.75);
             for (let j = 0; j < model.enemyArray.length; j++) {
-                let enemyX = model.enemyArray[j].x + model.enemyArray[j].width / 2.5;
-                let enemyY = model.enemyArray[j].y + model.enemyArray[j].height / 2.5;
+                let enemyShip = model.enemyArray[j];
+                let enemyX = enemyShip.x + enemyShip.width / 2.5;
+                let enemyY = enemyShip.y + enemyShip.height / 2.5;
                 if ((enemyX <= asteroidXRadiusRight && enemyX >= asteroidXRadiusLeft) &&
-                    enemyY <= asteroidYRadiusDown && enemyY >= asteroidYRadiusUp && model.enemyArray[j].isAlive) {
-                    console.log('enemyShip crashed!');
-                    model.enemyArray[j].enemyDied();
+                    enemyY <= asteroidYRadiusDown && enemyY >= asteroidYRadiusUp && enemyShip.isAlive) {
+                    if (enemyShip.health === 0) enemyShip.enemyDied();
+                    else {
+                        enemyShip.health--;
+                        console.log('enemy ship hit by asteroid health : ', enemyShip.health);
+                        enemyShip.isHit = true;
+                    }
                 }
             }
         }

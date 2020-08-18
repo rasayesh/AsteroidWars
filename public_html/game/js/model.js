@@ -1,9 +1,5 @@
 class Model {
     constructor() {
-        // sounds vars
-        this.asteroidExplodeSound = new Howl({
-            src: ['/asteroid_game/sounds/asteroid_explode.mp3'],
-        });
 
         // game over flag
         this.gameOver = false;
@@ -16,7 +12,7 @@ class Model {
         this.totalLargeAsteroidsDestroyed = 0;
 
         // enemy stats
-        this.enemySpawnTicker = 1;
+        this.enemySpawnTicker = 0;
         this.enemiesSpawned = 0;
         this.enemiesDestroyed = 0;
         this.enemyArray = [];

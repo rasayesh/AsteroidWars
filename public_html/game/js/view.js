@@ -4,7 +4,7 @@ let model; // game state storage.
 let controller; // control games state.
 
 //Audio
-let introSound;
+//let introSound;
 let engineBurstSound;
 let fireCannonSound;
 
@@ -38,13 +38,13 @@ let seconds, minutes, hours;
 
 /* load game sounds on initialization */
 function loadSounds() {
-    introSound = new Howl({ src: ['/asteroid_game/sounds/intro.mp3'] });
+    //introSound = new Howl({ src: ['/asteroid_game/sounds/intro.mp3'] });
     engineBurstSound = new Howl({
-        src: ['/asteroid_game/sounds/thrust.mp3'],
+        src: ['/public_html/game/sounds/thrust.mp3'],
         onplay: () => { engineBurstSoundBoolOn = true; },
         onend: () => { engineBurstSoundBoolOn = false; }
     });
-    fireCannonSound = new Howl({ src: ['/asteroid_game/sounds/lazer_gun.mp3'] });
+    fireCannonSound = new Howl({ src: ['/public_html/game/sounds/lazer_gun.mp3'] });
 }
 
 /* initial game setup */
@@ -82,7 +82,7 @@ function cycleGame() {
             if (turnLeft && model.player.isAlive) controller.turnLeft();
             if (turnRight && model.player.isAlive) controller.turnRight();
             if (fireCannon && model.player.isAlive) fireCannonSound.play();
-            if (fireCannon && model.player.isAlive) controller.fireCannon();
+            if (fireCannon && model.player.isAlive) controller.firePlayerCannon();
             fireCannon = false;
             resetStage(); // clear
             populateCanvas(); // update
@@ -156,7 +156,8 @@ function populateCanvas() {
     let playerImg = $('#player')[0];
     let thrustImg = $('#playerThrust')[0];
     let enemy = $('#enemy')[0];
-    let bullet = $('#bullet')[0];
+    let enemyDamaged = $('#enemyDamaged')[0];
+    let playerBullet = $('#bullet')[0];
     let asteroidLargeImg = $('#asteroidLarge')[0];
     let asteroidMediumImg = $('#asteroidMedium')[0];
     let asteroidSmallImg = $('#asteroidSmall')[0];
@@ -195,10 +196,11 @@ function populateCanvas() {
     // draw enemyship/s on canvas
     for (let k = 0; k < model.enemyArray.length; k++) {
         ctx.beginPath();
-        console.log('drawing enemy');
         let enemyX = model.enemyArray[k].x;
         let enemyY = model.enemyArray[k].y;
-        rotateAndDrawImage(enemy, enemyX, enemyY, 0);
+        let enemyIsHit = model.enemyArray[k].isHit;
+        if (enemyIsHit) rotateAndDrawImage(enemyDamaged, enemyX, enemyY, 0);
+        else rotateAndDrawImage(enemy, enemyX, enemyY, 0);
     }
 
 
@@ -208,7 +210,7 @@ function populateCanvas() {
         let bulletX = model.player.ammunition[j].x;
         let bulletY = model.player.ammunition[j].y;
         let angle = model.player.ammunition[j].angle;
-        rotateAndDrawImage(bullet, bulletX, bulletY, angle);
+        rotateAndDrawImage(playerBullet, bulletX, bulletY, angle);
     }
 
     // draw all the asteroids to canvas
@@ -283,7 +285,7 @@ function resetStage() {
 /* start window */
 function startGame() {
     getUser();
-    introSound.play();
+    //introSound.play();
     gameBegun = true
     timeBeginflag = true;
     $('#startWindow').css('display', 'none');

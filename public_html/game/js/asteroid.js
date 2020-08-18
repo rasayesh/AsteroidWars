@@ -8,13 +8,25 @@
 
 class Asteroid {
     constructor() {
+        // asteroid explosion sound
+        this.asteroidExplodeSound = new Howl({ src: ['/public_html/game/sounds/asteroid_explode.mp3'] });
+
+        // position x & y
         this.x = 0;
         this.y = 0;
+
+        // size
         this.width = parseInt($('#asteroidLarge')[0].width);
         this.height = parseInt($('#asteroidLarge')[0].height);
+
+        // velocity x & y
         this.verticalVelocity = 0;
         this.horizontalVelocity = 0;
+
+        // angle
         this.angle = 0; //radians
+
+        // is hit
         this.isHit = false;
 
         // size;

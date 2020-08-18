@@ -8,13 +8,26 @@
 
 class Bullet {
     constructor() {
+        // owner
+        this.isPlayerBullet = false;
+        this.isEnemyBullet = false;
+
+        // position
         this.x = 0;
         this.y = 0;
+
+        // size
         this.width = parseInt($('#bullet')[0].width);
         this.height = parseInt($('#bullet')[0].height);
+
+        // speed 
         this.verticalVelocity = 0;
         this.horizontalVelocity = 0;
+
+        // angle
         this.angle = 0; //radians
+
+        // range
         this.range = 10000; // range of cannon
         this.rangeTravelled = 0;
     }
