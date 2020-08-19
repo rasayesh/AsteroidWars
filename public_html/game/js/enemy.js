@@ -32,11 +32,37 @@ class Enemy {
         this.verticalVelocity = 0;
         this.horizontalVelocity = -.5;
 
+        // variable attached to interval timer
+        this.intervalVar;
+
         // ammo
         this.ammunition = [];
+        this.initializeWeapons();
+    }
+
+    initializeWeapons() {
+        this.intervalVar = setInterval(() => {
+            for (let i = 0; i < 12; i++) {
+                let newBullet = new Bullet();
+                newBullet.isEnemyBullet = true;
+                newBullet.x = this.x;
+                newBullet.y = this.y;
+                newBullet.width = parseInt($('#enemyBullet')[0].width);
+                newBullet.height = parseInt($('#enemyBullet')[0].height);
+                newBullet.verticalVelocity = 0;
+                newBullet.horizontalVelocity = 0;
+                newBullet.angle = i;
+                this.ammunition.push(newBullet);
+                this.shoot.play();
+            }
+
+        }, 1000);
+
+
     }
 
     enemyDied() {
+        clearInterval(this.intervalVar);
         this.spaceShipExplodeSound.play();
         this.isAlive = false;
         this.horizontalVelocity = 0;

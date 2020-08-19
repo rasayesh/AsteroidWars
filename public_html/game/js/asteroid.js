@@ -29,6 +29,10 @@ class Asteroid {
         // is hit
         this.isHit = false;
 
+        // who destroyed this asteroid
+        this.destroyedByPlayer = false;
+        this.destroyedByEnemy = false;
+
         // size;
         this.large = true;
         this.medium = false;

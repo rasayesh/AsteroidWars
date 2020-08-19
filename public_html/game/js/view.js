@@ -62,7 +62,8 @@ function cycleGame() {
             controller.updateEnemyEvent(minutes); // check if the enemy spaceship should be spawned (happens every 1 minute)
             controller.updatePlayerPosition(); // update player x & y
             controller.updateEnemyPosition(); // update enemy x & y
-            controller.updatePlayerBullets(); // update player bullet x & y
+            controller.updatePlayerBullets(); // update player bullets x & y
+            controller.updateEnemyBullets(); // update enemy bullets x & y
             controller.updateAsteroidPosition(); // update asteroid x & y
             // check destroyed conditions
             controller.updatePlayerDestroyed(); // check if player destroyed (remove)
@@ -151,11 +152,12 @@ function populateCanvas() {
     // player image variables
     let playerImg = $('#player')[0];
     let thrustImg = $('#playerThrust')[0];
-    let playerBulletImg = $('#bullet')[0];
+    let playerBulletImg = $('#playerBullet')[0];
 
     // enemy image variables
     let enemyImg = $('#enemy')[0];
     let enemyDamagedImg = $('#enemyDamaged')[0];
+    let enemyBulletImg = $('#enemyBullet')[0];
 
     // explosion image variables
     let explosionImg1 = $('#explosion1')[0];
@@ -210,13 +212,25 @@ function populateCanvas() {
         else rotateAndDrawImage(enemyImg, enemyX, enemyY, 0);
     }
 
-    // draw all the bullets to canvas
+    // draw all the player bullets to canvas
     for (let j = 0; j < model.player.ammunition.length; j++) {
         ctx.beginPath();
         let bulletX = model.player.ammunition[j].x;
         let bulletY = model.player.ammunition[j].y;
         let angle = model.player.ammunition[j].angle;
         rotateAndDrawImage(playerBulletImg, bulletX, bulletY, angle);
+    }
+
+    // draw all the enemy bullets to canvas
+    for (let k = 0; k < model.enemyArray.length; k++) {
+        let enemy = model.enemyArray[k];
+        for (let i = 0; i < enemy.ammunition.length; i++) {
+            ctx.beginPath();
+            let bulletX = enemy.ammunition[i].x;
+            let bulletY = enemy.ammunition[i].y;
+            let angle = enemy.ammunition[i].angle;
+            rotateAndDrawImage(enemyBulletImg, bulletX, bulletY, angle);
+        }
     }
 
     // draw all the asteroids to canvas
@@ -292,7 +306,7 @@ function postTime() {
 /* helper function to keep track of player lives remaining in game */
 function postLives() {
     $('#countLife').html('');
-    for (let i = 0; i < model.numPlayerLives; i++) $('#countLife').prepend('<img src="./graphics/spacecraft/life.png"width="60" height="30" />')
+    for (let i = 0; i < model.numPlayerLives; i++) $('#countLife').prepend(' ').prepend('<img src="./graphics/spacecraft/life.png"width="30" height="40" />')
 }
 
 /* helper function to display player score */

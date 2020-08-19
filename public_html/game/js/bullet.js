@@ -17,8 +17,8 @@ class Bullet {
         this.y = 0;
 
         // size
-        this.width = parseInt($('#bullet')[0].width);
-        this.height = parseInt($('#bullet')[0].height);
+        this.width;
+        this.height;
 
         // speed 
         this.verticalVelocity = 0;
