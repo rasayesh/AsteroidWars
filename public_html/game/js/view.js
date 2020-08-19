@@ -6,8 +6,6 @@ let controller; // control games state.
 //Audio
 //let introSound;
 let engineBurstSound;
-let fireCannonSound;
-
 let engineBurstSoundBoolOn = false;
 
 // canvas
@@ -44,7 +42,6 @@ function loadSounds() {
         onplay: () => { engineBurstSoundBoolOn = true; },
         onend: () => { engineBurstSoundBoolOn = false; }
     });
-    fireCannonSound = new Howl({ src: ['/public_html/game/sounds/lazer_gun.mp3'] });
 }
 
 /* initial game setup */
@@ -81,7 +78,6 @@ function cycleGame() {
             if (engineBurst && model.player.isAlive) controller.engineBurst();
             if (turnLeft && model.player.isAlive) controller.turnLeft();
             if (turnRight && model.player.isAlive) controller.turnRight();
-            if (fireCannon && model.player.isAlive) fireCannonSound.play();
             if (fireCannon && model.player.isAlive) controller.firePlayerCannon();
             fireCannon = false;
             resetStage(); // clear
@@ -152,12 +148,23 @@ function populateCanvas() {
     postLives(); // draw remaining lives
     postScore(); // draw score
 
-    // image variables
+    // player image variables
     let playerImg = $('#player')[0];
     let thrustImg = $('#playerThrust')[0];
-    let enemy = $('#enemy')[0];
-    let enemyDamaged = $('#enemyDamaged')[0];
-    let playerBullet = $('#bullet')[0];
+    let playerBulletImg = $('#bullet')[0];
+
+    // enemy image variables
+    let enemyImg = $('#enemy')[0];
+    let enemyDamagedImg = $('#enemyDamaged')[0];
+
+    // explosion image variables
+    let explosionImg1 = $('#explosion1')[0];
+    let explosionImg2 = $('#explosion2')[0];
+    let explosionImg3 = $('#explosion3')[0];
+    let explosionImg4 = $('#explosion4')[0];
+    let explosionImg5 = $('#explosion5')[0];
+
+    // asteroid image variables
     let asteroidLargeImg = $('#asteroidLarge')[0];
     let asteroidMediumImg = $('#asteroidMedium')[0];
     let asteroidSmallImg = $('#asteroidSmall')[0];
@@ -199,10 +206,9 @@ function populateCanvas() {
         let enemyX = model.enemyArray[k].x;
         let enemyY = model.enemyArray[k].y;
         let enemyIsHit = model.enemyArray[k].isHit;
-        if (enemyIsHit) rotateAndDrawImage(enemyDamaged, enemyX, enemyY, 0);
-        else rotateAndDrawImage(enemy, enemyX, enemyY, 0);
+        if (enemyIsHit) rotateAndDrawImage(enemyDamagedImg, enemyX, enemyY, 0);
+        else rotateAndDrawImage(enemyImg, enemyX, enemyY, 0);
     }
-
 
     // draw all the bullets to canvas
     for (let j = 0; j < model.player.ammunition.length; j++) {
@@ -210,7 +216,7 @@ function populateCanvas() {
         let bulletX = model.player.ammunition[j].x;
         let bulletY = model.player.ammunition[j].y;
         let angle = model.player.ammunition[j].angle;
-        rotateAndDrawImage(playerBullet, bulletX, bulletY, angle);
+        rotateAndDrawImage(playerBulletImg, bulletX, bulletY, angle);
     }
 
     // draw all the asteroids to canvas
@@ -222,6 +228,31 @@ function populateCanvas() {
         else if (model.asteroidArray[i].medium) rotateAndDrawImage(asteroidMediumImg, asteroidX, asteroidY, 1);
         else if (model.asteroidArray[i].small) rotateAndDrawImage(asteroidSmallImg, asteroidX, asteroidY, 1);
     }
+
+    // draw all explosions taking place
+    for (let i = 0; i < model.explosionArray.length; i++) {
+        ctx.beginPath();
+        let explosion = model.explosionArray[i];
+        if (explosion.isEnemy || explosion.isLargeAsteroid) {
+            rotateAndDrawImage(explosionImg1, explosion.x, explosion.y, 1);
+            rotateAndDrawImage(explosionImg2, explosion.x, explosion.y, 1);
+            rotateAndDrawImage(explosionImg3, explosion.x, explosion.y, 1);
+            rotateAndDrawImage(explosionImg4, explosion.x, explosion.y, 1);
+            rotateAndDrawImage(explosionImg5, explosion.x, explosion.y, 1);
+        } else if (explosion.isPlayer || explosion.isMediumAsteroid) {
+            rotateAndDrawImage(explosionImg1, explosion.x, explosion.y, 1);
+            rotateAndDrawImage(explosionImg2, explosion.x, explosion.y, 1);
+        } else if (explosion.isSmallAsteroid) {
+            rotateAndDrawImage(explosionImg1, explosion.x, explosion.y, 1);
+        } else {
+            rotateAndDrawImage(explosionImg1, explosion.x, explosion.y, 1);
+            rotateAndDrawImage(explosionImg2, explosion.x, explosion.y, 1);
+            rotateAndDrawImage(explosionImg3, explosion.x, explosion.y, 1);
+            rotateAndDrawImage(explosionImg4, explosion.x, explosion.y, 1);
+            rotateAndDrawImage(explosionImg5, explosion.x, explosion.y, 1);
+        }
+    }
+    controller.resetExplosionArray();
 }
 
 /* helper function to draw an image on the canvas */

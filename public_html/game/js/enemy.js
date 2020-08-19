@@ -5,6 +5,9 @@ class Enemy {
         this.spawnSound = new Howl({ src: ['/public_html/game/sounds/enemy_spawn.mp3'] });
         this.spawnSound.play();
 
+        // enemy lazer gun sound
+        this.shoot = new Howl({ src: ['/public_html/game/sounds/enemy_lazer_gun.mp3'] });
+
         // enemy ship explode sound
         this.spaceShipExplodeSound = new Howl({ src: ['/public_html/game/sounds/ship_explode.mp3'] });
 

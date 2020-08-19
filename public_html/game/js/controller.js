@@ -22,6 +22,11 @@ class Controller {
         model.player.isSafeToSpawn = true;
     }
 
+    // make model explosion array empty, no more explosions on map
+    resetExplosionArray() {
+        model.explosionArray = [];
+    }
+
     // player ship controls
     turnLeft() { model.player.turnLeft(); }
     turnRight() { model.player.turnRight(); }
@@ -36,6 +41,7 @@ class Controller {
         newBullet.horizontalVelocity = model.player.horizontalVelocity;
         newBullet.angle = model.player.angle;
         model.player.ammunition.push(newBullet);
+        model.player.shoot.play();
     }
 
     // update player/enemy/asteroid/playerBullet/enemyBullet position
@@ -113,6 +119,10 @@ class Controller {
         for (let asteroid = 0; asteroid < model.asteroidCount; asteroid++) {
             if (model.asteroidArray[asteroid].isHit) {
                 if (model.asteroidArray[asteroid].large) {
+                    // make large asteroid explosion
+                    let newExplosion = new Explosion(model.asteroidArray[asteroid].x, model.asteroidArray[asteroid].y);
+                    newExplosion.isLargeAsteroid = true;
+                    model.explosionArray.push(newExplosion);
                     for (let i = 0; i < 2; i++) {
                         let x = model.asteroidArray[asteroid].x;
                         let y = model.asteroidArray[asteroid].y;
@@ -133,6 +143,10 @@ class Controller {
                     model.totalAsteroidsDestroyed += 1
                     model.playerScore += 10;
                 } else if (model.asteroidArray[asteroid].medium) {
+                    // make medium asteroid explosion
+                    let newExplosion = new Explosion(model.asteroidArray[asteroid].x, model.asteroidArray[asteroid].y);
+                    newExplosion.isMediumAsteroid = true;
+                    model.explosionArray.push(newExplosion);
                     for (let i = 0; i < 4; i++) {
                         let x = model.asteroidArray[asteroid].x;
                         let y = model.asteroidArray[asteroid].y;
@@ -153,6 +167,10 @@ class Controller {
                     model.totalAsteroidsDestroyed += 1
                     model.playerScore += 50;
                 } else if (model.asteroidArray[asteroid].small) {
+                    // make small asteroid explosion
+                    let newExplosion = new Explosion(model.asteroidArray[asteroid].x, model.asteroidArray[asteroid].y);
+                    newExplosion.isSmallAsteroid = true;
+                    model.explosionArray.push(newExplosion);
                     model.asteroidArray[asteroid].asteroidExplodeSound.play();
                     model.asteroidArray.splice(asteroid, 1);
                     model.asteroidCount--;
@@ -176,7 +194,9 @@ class Controller {
             if ((spaceshipX <= asteroidXRadiusRight && spaceshipX >= asteroidXRadiusLeft) &&
                 spaceshipY <= asteroidYRadiusDown && spaceshipY >= asteroidYRadiusUp && model.player.isAlive) {
                 console.log('spaceship crashed!');
-                console.log('you died!');
+                let newExplosion = new Explosion(spaceshipX, spaceshipY);
+                newExplosion.isPlayer = true;
+                model.explosionArray.push(newExplosion);
                 model.player.playerDied();
                 model.numPlayerLives--; // player loses 1 life
                 if (model.numPlayerLives === 0) {
@@ -215,7 +235,6 @@ class Controller {
         for (let enemy = 0; enemy < model.enemyArray.length; enemy++) {
             model.enemyArray[enemy].isHit = false;
         }
-
         // check if player killed enemy
         for (let i = 0; i < model.enemyArray.length; i++) {
             let enemyShip = model.enemyArray[i];
@@ -229,8 +248,12 @@ class Controller {
                 if ((bulletX <= enemyShipXRadiusRight && bulletX >= enemyShipXRadiusLeft) &&
                     bulletY <= enemyShipYRadiusDown && bulletY >= enemyShipXRadiusUp) {
                     model.player.ammunition[j].rangeTravelled = model.player.ammunition[j].range; // get rid of bullet 
-                    if (enemyShip.health === 0) enemyShip.enemyDied();
-                    else {
+                    if (enemyShip.health === 0) {
+                        let newExplosion = new Explosion(enemyShip.x, enemyShip.y);
+                        newExplosion.isEnemy = true;
+                        model.explosionArray.push(newExplosion);
+                        enemyShip.enemyDied();
+                    } else {
                         enemyShip.health--;
                         console.log('enemy ship shot health : ', enemyShip.health);
                         enemyShip.isHit = true;

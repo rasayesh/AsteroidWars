@@ -27,6 +27,9 @@ class Model {
         this.asteroidCount = 2; // current asteroids on map
         this.asteroidArray = []; // array of asteroid objects 
         this.initializeAsteroids();
+
+        // explosions
+        this.explosionArray = [];
     }
 
     initializeAsteroids() {

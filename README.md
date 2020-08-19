@@ -26,7 +26,7 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
 - [X] add health to enemy ship (takes x amount of shots to destroy) flash red on hit.
 - [X] delete intro sound
 - [X] add enemy spaceship intro sound
-- [ ] add active explosion sprite or gif
+- [X] add explosion to destroyed asteroid/player/enemy
 - [ ] add space enemy spaceship thrust pic 
 - [ ] on asteroid death add a drop (money/resource...)
 - [ ] change game economy small/med/lrg asteroids & enemy bounty

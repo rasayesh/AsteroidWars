@@ -1,5 +1,8 @@
 class Player {
     constructor() {
+        // player lazer gun sound
+        this.shoot = new Howl({ src: ['/public_html/game/sounds/player_lazer_gun.mp3'] });
+
         // player ship explode sound
         this.spaceShipExplodeSound = new Howl({ src: ['/public_html/game/sounds/ship_explode.mp3'] });
 
