@@ -3,9 +3,6 @@ let user; // current user
 let model; // game state storage.
 let controller; // control games state.
 
-//Audio
-//let introSound;
-
 // canvas
 let canvas;
 let canvasHeight;
@@ -31,11 +28,6 @@ let displayedStats = false;
 let timeBeginflag = false;
 let timeElapsed, startTime, endTime;
 let seconds, minutes, hours;
-
-/* load game sounds on initialization */
-function loadSounds() {
-    //introSound = new Howl({ src: ['/asteroid_game/sounds/intro.mp3'] });
-}
 
 /* initial game setup */
 $(document).ready(() => {
@@ -70,6 +62,7 @@ function cycleGame() {
             controller.asteroidsAllGoneEvent(); // if asteroids gone, initialize next round
             if (respawn && !model.player.isAlive) { // allow player to respawn if they press respawn button and are not alive
                 respawn = false;
+                model.player.spawn.play();
                 controller.respawn();
             }
             if (thrust && model.player.isAlive) controller.thrust();
@@ -87,7 +80,6 @@ function cycleGame() {
 
 /* set all game booleans to initial status and create new model/controller connection */
 function initializeGame() {
-    loadSounds();
     engineBurstSoundBoolOn = false;
     //thrust = false;
     turnLeft = false;

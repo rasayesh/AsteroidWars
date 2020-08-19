@@ -1,18 +1,22 @@
 class Player {
     constructor() {
+        // player spawn sound
+        this.spawn = new Howl({ src: ['/public_html/game/sounds/player/player_spawn.mp3'], volume: 0.7 });
+
         // player lazer gun sound
-        this.shoot = new Howl({ src: ['/public_html/game/sounds/player_lazer_gun.mp3'] });
+        this.shoot = new Howl({ src: ['/public_html/game/sounds/player/player_lazer_gun.mp3'], volume: 0.7 });
 
         // player engine thrust sound
         this.thrustOn = false;
         this.thrustSound = new Howl({
-            src: ['/public_html/game/sounds/thrust.mp3'],
+            src: ['/public_html/game/sounds/player/player_thrust.mp3'],
             onplay: () => { this.thrustOn = true; },
-            onend: () => { this.thrustOn = false; }
+            onend: () => { this.thrustOn = false; },
+            volume: 0.7
         });
 
         // player ship explode sound
-        this.spaceShipExplodeSound = new Howl({ src: ['/public_html/game/sounds/ship_explode.mp3'] });
+        this.spaceShipExplodeSound = new Howl({ src: ['/public_html/game/sounds/explosion/ship_explode.mp3'], volume: 0.7 });
 
         // alive flag
         this.isAlive = false;

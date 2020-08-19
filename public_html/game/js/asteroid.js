@@ -9,7 +9,7 @@
 class Asteroid {
     constructor() {
         // asteroid explosion sound
-        this.asteroidExplodeSound = new Howl({ src: ['/public_html/game/sounds/asteroid_explode.mp3'] });
+        this.asteroidExplodeSound = new Howl({ src: ['/public_html/game/sounds/explosion/asteroid_explode.mp3'], volume: 0.5 });
 
         // position x & y
         this.x = 0;

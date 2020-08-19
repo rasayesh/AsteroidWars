@@ -32,10 +32,10 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
 - [X] change player spaceship sprite
 - [X] change game economy small/med/lrg asteroids & enemy bounty
 - [X] make pause menu same as end game menu without "game over" 
-- [ ] add enemy thrust sound
-- [ ] add player spawn sound
-- [ ] add background music
-- [ ] adjust volume of each sound
+- [X] add enemy thrust sound
+- [X] add player spawn sound
+- [X] adjust volume of each sound
+- [X] add background music
 - [ ] update Player schema to store new data about enemy ships (enemy killed / total enemy spawned) and add rounds
 - [ ] change "high scores" to "all scores"
 - [ ] add ability to change ordering in both highscores menu and profile menu<br/>

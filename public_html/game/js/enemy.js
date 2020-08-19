@@ -4,14 +4,23 @@ class Enemy {
         this.pause = false;
 
         // enemy spawn sound
-        this.spawnSound = new Howl({ src: ['/public_html/game/sounds/enemy_spawn.mp3'] });
+        this.spawnSound = new Howl({ src: ['/public_html/game/sounds/enemy/enemy_spawn.mp3'], volume: 0.6 });
         this.spawnSound.play();
 
         // enemy lazer gun sound
-        this.shoot = new Howl({ src: ['/public_html/game/sounds/enemy_lazer_gun.mp3'] });
+        this.shoot = new Howl({ src: ['/public_html/game/sounds/enemy/enemy_lazer_gun.mp3'], volume: 0.05 });
 
         // enemy ship explode sound
-        this.spaceShipExplodeSound = new Howl({ src: ['/public_html/game/sounds/ship_explode.mp3'] });
+        this.spaceShipExplodeSound = new Howl({ src: ['/public_html/game/sounds/explosion/ship_explode.mp3'], volume: 0.8 });
+
+        // enemy thrust sound
+        this.thrustOn = false;
+        this.thrustSound = new Howl({
+            src: ['/public_html/game/sounds/enemy/enemy_thrust.mp3'],
+            onplay: () => { this.thrustOn = true; },
+            onend: () => { this.thrustOn = false; },
+            volume: 1
+        });
 
         // health
         this.health = 100;
@@ -47,8 +56,19 @@ class Enemy {
 
     }
 
+    // make enemy shoot every 1 second in 12 directions, initialize thrust sound
     initializeWeapons() {
         this.intervalVar = setInterval(() => {
+            // while enemy is firing weapons it will be running so also play thrust sound.
+            if (!this.pause) {
+                if (!this.thrustOn) {
+                    this.thrustSound.play();
+                }
+            } else {
+                this.thrustSound.stop();
+            }
+
+            // fire weapons
             if (!this.pause) {
                 for (let i = 0; i < 12; i++) {
                     let newBullet = new Bullet();
@@ -61,7 +81,7 @@ class Enemy {
                     newBullet.horizontalVelocity = 0;
                     newBullet.angle = i;
                     this.ammunition.push(newBullet);
-                    //this.shoot.play();
+                    this.shoot.play();
                 }
             }
         }, 1000);
@@ -69,8 +89,10 @@ class Enemy {
 
     }
 
+    // set enemy variables to dead, to remove this object
     enemyDied() {
         clearInterval(this.intervalVar);
+        this.thrustSound.stop();
         this.spaceShipExplodeSound.play();
         this.isAlive = false;
         this.horizontalVelocity = 0;
