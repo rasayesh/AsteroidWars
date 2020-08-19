@@ -362,6 +362,9 @@ function displayStats() {
     $('#user_stat').html('User: ' + user);
     $('#time_stat').html('Time: ' + $('#timeElapsed')[0].innerHTML);
     $('#score_stat').html('Score: ' + model.playerScore);
+    $('#round_stat').html('Rounds: ' + model.round);
+    $('#enemiesDest_stat').html('Enemies Destroyed: ' + model.enemiesDestroyed);
+    $('#enemiesSpwn_stat').html('Enemies Spawned: ' + model.enemiesSpawned);
     $('#asteroidDest_stat').html('Asteroids Destroyed: ' + model.totalAsteroidsDestroyed);
     $('#asteroidSpwn_stat').html('Asteroids Spawned: ' + model.totalAsteroids);
     updateUserGames(); // send stats to server
@@ -388,11 +391,25 @@ function updateUserGames() {
     let u = user;
     let t = $('#timeElapsed')[0].innerHTML;
     let s = model.playerScore;
+    let r = model.round;
+    let ed = model.enemiesDestroyed;
+    let es = model.enemiesSpawned;
     let ad = model.totalAsteroidsDestroyed;
     let as = model.totalAsteroids;
+
     $.ajax({
         url: '/update/user/games/',
-        data: { username: u, gameDate: d, gametime: t, score: s, asteroidsDestroyed: ad, asteroidsSpawned: as },
+        data: {
+            username: u,
+            gameDate: d,
+            gametime: t,
+            score: s,
+            rounds: r,
+            enemiesDestroyed: ed,
+            enemiesSpawned: es,
+            asteroidsDestroyed: ad,
+            asteroidsSpawned: as,
+        },
         method: 'POST',
         success: function(output) {}
     });

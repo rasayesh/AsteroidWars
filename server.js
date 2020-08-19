@@ -65,6 +65,9 @@ let GameDataSchema = new Schema({
     gameDate: String,
     gametime: String,
     score: Number,
+    rounds: Number,
+    enemiesDestroyed: Number,
+    enemiesSpawned: Number,
     asteroidsDestroyed: Number,
     asteroidsSpawned: Number
 });

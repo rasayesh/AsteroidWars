@@ -36,8 +36,8 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
 - [X] add player spawn sound
 - [X] adjust volume of each sound
 - [X] add background music
-- [ ] update Player schema to store new data about enemy ships (enemy killed / total enemy spawned) and add rounds
-- [ ] change "high scores" to "all scores"
+- [X] update Player schema to store new data about enemy ships (enemy killed / total enemy spawned) and add rounds
+- [X] change "high scores" to "all scores"
 - [ ] add ability to change ordering in both highscores menu and profile menu<br/>
       - highest to lowest (score)<br/>
       - lowest to highest (score)<br/>

@@ -294,6 +294,7 @@ class Controller {
             model.asteroidCount = Math.floor(model.staticAsteroidCount);
             model.initializeAsteroids();
             model.player.resetToSpawnLocation();
+            model.round++;
         }
     }
 

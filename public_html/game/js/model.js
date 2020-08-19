@@ -3,8 +3,12 @@ class Model {
         // game background music
         this.backgroundmusic = new Howl({ src: ['/public_html/game/sounds/background/Serval.mp3'], loop: true, volume: .7 });
         this.backgroundmusic.play();
+
         // game over flag
         this.gameOver = false;
+
+        // current game round (+1 every time all asteroids destroyed)
+        this.round = 0;
 
         // asteroid stats
         this.totalAsteroids = 0;
