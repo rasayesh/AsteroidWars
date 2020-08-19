@@ -56,8 +56,11 @@
         <input class="button" id='backToMenu' value="Back to Menu" type="button" onclick="backToMenu();">
     </div>
 
-    <div id="pause">
-        <h1 id="pauseMessage">GAME PAUSED</h1>
+    <div class="infoWindow" id="pauseWindow">
+        <h1>Game Paused</h1>
+        <input class="button" id='start' value="Try Again" type="button" onclick="tryAgain();">
+        <input class="button" id='directions' value="Help" type="button" onclick="showDirections();">
+        <input class="button" id='backToMenu' value="Back to Menu" type="button" onclick="backToMenu();">
     </div>
 
     <!-- time /current player score / # lives left -->
@@ -81,9 +84,9 @@
     <img src="./graphics/spacecraft/bullet.png" id="playerBullet" width="55" height="25" alt="playerBullet" />
 
     <!-- enemy spacecraft -->
-    <img src="./graphics/enemy/enemy_spacecraft.PNG" id="enemy" width="200" height="180" alt="enemyImg" />
+    <img src="./graphics/enemy/enemy_spacecraft.PNG" id="enemy" width="200" height="160" alt="enemyImg" />
     <img src="./graphics/enemy/enemy_spacecraft_damaged.png" id="enemyDamaged" width="200" height="180" alt="enemyDamagedImg" />
-    <img src="./graphics/enemy/enemyBullet.PNG" id="enemyBullet" width="20" height="20" alt="enemyBullet" />
+    <img src="./graphics/enemy/enemyBullet.PNG" id="enemyBullet" width="10" height="10" alt="enemyBullet" />
 
     <!-- asteroids -->
     <img src="./graphics/asteroids/asteroid_large.png" id="asteroidLarge" width="200" height="200" alt="asteroidLrgImg" />

@@ -1,5 +1,7 @@
 class Enemy {
     constructor() {
+        // pause flag, to pause shooting when game is paused
+        this.pause = false;
 
         // enemy spawn sound
         this.spawnSound = new Howl({ src: ['/public_html/game/sounds/enemy_spawn.mp3'] });
@@ -38,24 +40,30 @@ class Enemy {
         // ammo
         this.ammunition = [];
         this.initializeWeapons();
+
+        // who destroyed this enemy
+        this.destroyedByPlayer = false;
+        this.destroyedByAsteroid = false;
+
     }
 
     initializeWeapons() {
         this.intervalVar = setInterval(() => {
-            for (let i = 0; i < 12; i++) {
-                let newBullet = new Bullet();
-                newBullet.isEnemyBullet = true;
-                newBullet.x = this.x;
-                newBullet.y = this.y;
-                newBullet.width = parseInt($('#enemyBullet')[0].width);
-                newBullet.height = parseInt($('#enemyBullet')[0].height);
-                newBullet.verticalVelocity = 0;
-                newBullet.horizontalVelocity = 0;
-                newBullet.angle = i;
-                this.ammunition.push(newBullet);
-                this.shoot.play();
+            if (!this.pause) {
+                for (let i = 0; i < 12; i++) {
+                    let newBullet = new Bullet();
+                    newBullet.isEnemyBullet = true;
+                    newBullet.x = this.x;
+                    newBullet.y = this.y;
+                    newBullet.width = parseInt($('#enemyBullet')[0].width);
+                    newBullet.height = parseInt($('#enemyBullet')[0].height);
+                    newBullet.verticalVelocity = 0;
+                    newBullet.horizontalVelocity = 0;
+                    newBullet.angle = i;
+                    this.ammunition.push(newBullet);
+                    this.shoot.play();
+                }
             }
-
         }, 1000);
 
 

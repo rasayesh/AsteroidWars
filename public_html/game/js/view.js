@@ -52,6 +52,11 @@ $(document).ready(() => {
 
 /* cycles through the game updating every 10milliseconds to give moving image affect */
 function cycleGame() {
+    if (pause)
+        for (let k = 0; k < model.enemyArray.length; k++) model.enemyArray[k].pause = true;
+    else
+        for (let k = 0; k < model.enemyArray.length; k++) model.enemyArray[k].pause = false;
+
     if (!pause) {
         if (timeBeginflag) {
             startTime = new Date();
@@ -123,7 +128,7 @@ function initializeGame() {
         if (e.keyCode == '80') {
             if (!pause) pause = true;
             else pause = false;
-            $('#pause').toggle();
+            $('#pauseWindow').toggle();
         }
     });
     $(document).keyup((e) => {
@@ -137,10 +142,8 @@ function initializeGame() {
         if (e.keyCode == "32" && !pause) fireCannon = false;
         if (e.keyCode == "84" && !pause) respawn = false;
     });
-
     if (!firstLoad) startGame();
     else firstLoad = false;
-
 }
 
 /* draw an image onto the canvas */
@@ -335,6 +338,11 @@ function startGame() {
     timeBeginflag = true;
     $('#startWindow').css('display', 'none');
     $('#gameOverWindow').css('display', 'none');
+}
+
+/* location reload */
+function tryAgain() {
+    location.reload();
 }
 
 /* directions window */

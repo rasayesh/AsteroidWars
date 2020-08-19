@@ -28,7 +28,7 @@ class Bullet {
         this.angle = 0; //radians
 
         // range
-        this.range = 10000; // range of cannon
+        this.range = 100000; // range of cannon
         this.rangeTravelled = 0;
     }
 }

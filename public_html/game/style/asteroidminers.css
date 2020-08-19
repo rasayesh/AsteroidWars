@@ -137,13 +137,10 @@ canvas {
     min-height: 350px;
 }
 
-#pause {
+#pauseWindow {
     z-index: 1;
     color: red;
-    font-size: 2em;
-    position: fixed;
-    top: 35%;
-    left: 35%;
+    text-align: center;
 }
 
 #player,
@@ -164,6 +161,6 @@ canvas {
 #gameOverWindow,
 #gameStats,
 #displayDirections,
-#pause {
+#pauseWindow {
     display: none;
 }
