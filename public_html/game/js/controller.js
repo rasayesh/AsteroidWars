@@ -30,7 +30,7 @@ class Controller {
     // player ship controls
     turnLeft() { model.player.turnLeft(); }
     turnRight() { model.player.turnRight(); }
-    engineBurst() { model.player.engineBurst(); }
+    thrust() { model.player.thrust(); }
 
     firePlayerCannon() {
         let newBullet = new Bullet();

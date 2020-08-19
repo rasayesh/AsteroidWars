@@ -3,6 +3,14 @@ class Player {
         // player lazer gun sound
         this.shoot = new Howl({ src: ['/public_html/game/sounds/player_lazer_gun.mp3'] });
 
+        // player engine thrust sound
+        this.thrustOn = false;
+        this.thrustSound = new Howl({
+            src: ['/public_html/game/sounds/thrust.mp3'],
+            onplay: () => { this.thrustOn = true; },
+            onend: () => { this.thrustOn = false; }
+        });
+
         // player ship explode sound
         this.spaceShipExplodeSound = new Howl({ src: ['/public_html/game/sounds/ship_explode.mp3'] });
 
@@ -28,10 +36,13 @@ class Player {
         this.ammunition = [];
     }
 
-    engineBurst() {
+    thrust() {
         let arc = .01;
         this.verticalVelocity += -1 * arc * Math.sin(this.angle);
         this.horizontalVelocity += arc * Math.cos(this.angle);
+        if (!this.thrustOn) {
+            this.thrustSound.play();
+        }
     }
 
     turnLeft() {

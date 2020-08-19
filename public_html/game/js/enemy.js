@@ -61,7 +61,7 @@ class Enemy {
                     newBullet.horizontalVelocity = 0;
                     newBullet.angle = i;
                     this.ammunition.push(newBullet);
-                    this.shoot.play();
+                    //this.shoot.play();
                 }
             }
         }, 1000);

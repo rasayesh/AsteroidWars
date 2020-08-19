@@ -5,8 +5,6 @@ let controller; // control games state.
 
 //Audio
 //let introSound;
-let engineBurstSound;
-let engineBurstSoundBoolOn = false;
 
 // canvas
 let canvas;
@@ -15,7 +13,7 @@ let canvasWidth;
 let ctx;
 
 // booleans
-let engineBurst = false;
+let thrust = false;
 let turnLeft = false;
 let turnRight = false;
 let fireCannon = false;
@@ -37,11 +35,6 @@ let seconds, minutes, hours;
 /* load game sounds on initialization */
 function loadSounds() {
     //introSound = new Howl({ src: ['/asteroid_game/sounds/intro.mp3'] });
-    engineBurstSound = new Howl({
-        src: ['/public_html/game/sounds/thrust.mp3'],
-        onplay: () => { engineBurstSoundBoolOn = true; },
-        onend: () => { engineBurstSoundBoolOn = false; }
-    });
 }
 
 /* initial game setup */
@@ -75,13 +68,11 @@ function cycleGame() {
             controller.updateEnemyDestroyed(); // check if enemy asteroid destroyed (remove)
             controller.updateAsteroidDestroyed(); // check if asteroid has been destroyed (remove)
             controller.asteroidsAllGoneEvent(); // if asteroids gone, initialize next round
-            if (respawn && !model.player.isAlive) {
+            if (respawn && !model.player.isAlive) { // allow player to respawn if they press respawn button and are not alive
                 respawn = false;
                 controller.respawn();
             }
-            if (engineBurst && model.player.isAlive)
-                if (!engineBurstSoundBoolOn) engineBurstSound.play();
-            if (engineBurst && model.player.isAlive) controller.engineBurst();
+            if (thrust && model.player.isAlive) controller.thrust();
             if (turnLeft && model.player.isAlive) controller.turnLeft();
             if (turnRight && model.player.isAlive) controller.turnRight();
             if (fireCannon && model.player.isAlive) controller.firePlayerCannon();
@@ -98,7 +89,7 @@ function cycleGame() {
 function initializeGame() {
     loadSounds();
     engineBurstSoundBoolOn = false;
-    engineBurst = false;
+    //thrust = false;
     turnLeft = false;
     turnRight = false;
     fireCannon = false;
@@ -113,7 +104,7 @@ function initializeGame() {
     controller = new Controller(model);
     if (!gameCycling) setInterval(cycleGame, 10) // update gamestate every 10 milliseconds
     $(document).keydown((e) => {
-        if (e.keyCode == "87" && !pause) engineBurst = true;
+        if (e.keyCode == "87" && !pause) thrust = true;
         if (e.keyCode == "65" && !pause) turnLeft = true;
         if (e.keyCode == "68" && !pause) turnRight = true;
         if (e.keyCode == "32" && !pause) fireCannon = true;
@@ -133,9 +124,9 @@ function initializeGame() {
     });
     $(document).keyup((e) => {
         if (e.keyCode == "87" && !pause) {
-            engineBurst = false;
-            engineBurstSound.stop();
-            engineBurstSoundBoolOn = false;
+            thrust = false;
+            model.player.thrustSound.stop();
+            model.player.thrustOn = false;
         }
         if (e.keyCode == "65" && !pause) turnLeft = false;
         if (e.keyCode == "68" && !pause) turnRight = false;
@@ -183,7 +174,7 @@ function populateCanvas() {
     ctx.imageSmoothingQuality = 'high'; // smooths images when enlarged
 
     // draw player, player thrust, player spawn point, or game start
-    if (engineBurst && model.player.isAlive) rotateAndDrawImage(thrustImg, playerX, playerY, model.player.angle);
+    if (thrust && model.player.isAlive) rotateAndDrawImage(thrustImg, playerX, playerY, model.player.angle);
     else if (model.player.isAlive) rotateAndDrawImage(playerImg, playerX, playerY, model.player.angle);
     else if (!model.player.isalive && !firstSpawnFlag && gameBegun && !model.gameOver) {
         ctx.beginPath();
