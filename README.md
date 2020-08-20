@@ -38,13 +38,20 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
 - [X] add background music
 - [X] update Player schema to store new data about enemy ships (enemy killed / total enemy spawned) and add rounds
 - [X] change "high scores" to "all scores"
+- [X] re-design website
+- [ ] implement website skeleton
 - [ ] add ability to change ordering in both highscores menu and profile menu<br/>
       - highest to lowest (score)<br/>
       - lowest to highest (score)<br/>
-      - highest to lowest (asteroids spawned)<br/>
-      - lowest to highest (asteroids spawned)<br/>
+      - highest to lowest (rounds)<br/>
+      - lowest to highest (rounds)<br/>
+      - highest to lowest (enemies destroyed)<br/>
+      - lowest to highest (enemies destroyed)<br/>
+      - highest to lowest (enemies spawned)<br/>
+      - lowest to highest (enemies spawned)<br/>
       - highest to lowest (asteroids destroyed)<br/>
       - lowest to highest (asteroids destroyed)<br/>
-- [ ] change all old titles to "Asteroid Wars"
+      - highest to lowest (asteroids spawned)<br/>
+      - lowest to highest (asteroids spawned)<br/>
 - [ ] add favicon
 - [ ] add domain name to website.
