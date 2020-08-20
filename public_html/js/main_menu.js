@@ -13,7 +13,7 @@ function playGame() {
         method: 'GET',
         success: function(output) {
             console.log(output);
-            window.location = '../game/asteroidminers.html';
+            window.location = '../game/asteroid_wars.html';
         }
     });
 }
@@ -25,7 +25,7 @@ function highScores() {
         method: 'GET',
         success: function(output) {
             console.log(output);
-            window.location = '../high_scores.html';
+            window.location = '../all_scores.html';
         }
     });
 }

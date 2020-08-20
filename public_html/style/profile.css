@@ -19,7 +19,7 @@
 #background {
     position: fixed;
     color: orange;
-    background-image: url("/asteroid_game/graphics/backgrounds/test2.png");
+    background-image: url("../game/graphics/backgrounds/test2.png");
     height: 100%;
     width: 100%;
     background-position: center;

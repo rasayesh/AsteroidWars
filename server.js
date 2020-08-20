@@ -1,7 +1,7 @@
 /**
  * @author Reza Munoz-Asayesh
  * @file server.js 
- * @project Asteroid Miners
+ * @project AsteroidWars
  * @description This program, is the server to the asteroid game website,
  * It includes features like cookies, hashing & salting, database parsing
  * ,data base modification, and database uploading etc.

@@ -1,8 +1,5 @@
 class Explosion {
     constructor(x, y) {
-        this.img = new Image();
-        this.img.src = '/public_html/game/graphics/explosion/explosion_sprite.png';
-
         // columns & rows in sprite
         this.numCols = 5;
         this.numRows = 1;

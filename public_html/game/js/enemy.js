@@ -4,19 +4,19 @@ class Enemy {
         this.pause = false;
 
         // enemy spawn sound
-        this.spawnSound = new Howl({ src: ['/public_html/game/sounds/enemy/enemy_spawn.mp3'], volume: 0.6 });
+        this.spawnSound = new Howl({ src: ['../../game/sounds/enemy/enemy_spawn.mp3'], volume: 0.6 });
         this.spawnSound.play();
 
         // enemy lazer gun sound
-        this.shoot = new Howl({ src: ['/public_html/game/sounds/enemy/enemy_lazer_gun.mp3'], volume: 0.05 });
+        this.shoot = new Howl({ src: ['../../game/sounds/enemy/enemy_lazer_gun.mp3'], volume: 0.05 });
 
         // enemy ship explode sound
-        this.spaceShipExplodeSound = new Howl({ src: ['/public_html/game/sounds/explosion/ship_explode.mp3'], volume: 0.8 });
+        this.spaceShipExplodeSound = new Howl({ src: ['../../game/sounds/explosion/ship_explode.mp3'], volume: 0.8 });
 
         // enemy thrust sound
         this.thrustOn = false;
         this.thrustSound = new Howl({
-            src: ['/public_html/game/sounds/enemy/enemy_thrust.mp3'],
+            src: ['../../game/sounds/enemy/enemy_thrust.mp3'],
             onplay: () => { this.thrustOn = true; },
             onend: () => { this.thrustOn = false; },
             volume: 1

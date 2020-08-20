@@ -1,7 +1,7 @@
 class Model {
     constructor() {
         // game background music
-        this.backgroundmusic = new Howl({ src: ['/public_html/game/sounds/background/Serval.mp3'], loop: true, volume: .7 });
+        this.backgroundmusic = new Howl({ src: ['../../game/sounds/background/Serval.mp3'], loop: true, volume: .7 });
         this.backgroundmusic.play();
 
         // game over flag
