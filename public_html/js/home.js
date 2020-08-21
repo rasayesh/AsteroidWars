@@ -1,8 +1,10 @@
 /**
  * @author Reza Munoz-Asayesh
- * @file main_menu.js 
+ * @file home.js 
  * @project Asteroid Wars
- * @description 
+ * @description This js file provides functionality to display the content,
+ * that is in the home page. The home page is the first page that users see 
+ * when they are logged into the website.
  * 
  */
 
@@ -105,3 +107,5 @@ function logout() {
         }
     });
 }
+
+/* home functions */

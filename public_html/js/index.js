@@ -9,12 +9,6 @@
  * 
  */
 
-
-$(document).ready(() => {
-
-});
-
-
 // show login div, hide directory & signup divs
 function showLogin() {
     $('#directoryButton').css('display', 'none');

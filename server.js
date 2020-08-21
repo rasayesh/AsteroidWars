@@ -264,8 +264,11 @@ app.get('/get/allScores/', (req, res) => {
                         '<th>' + entry[i].gameDate + '</th>' +
                         '<th>' + entry[i].gametime + '</th>' +
                         '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
                         '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' + '<tr/>';
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
                 }
                 res.send(output);
             }

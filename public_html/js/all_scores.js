@@ -1,13 +1,16 @@
 /**
  * @author Reza Munoz-Asayesh
- * @file highScores.js 
- * @project Asteroid Miners
- * @description 
+ * @file all_scores.js 
+ * @project Asteroid Wars
+ * @description This js file provides functionality to access all of the scores
+ * in the game, the user is able to order them by different values, by 
+ * selecting the sort by menu and making their selection. by default the
+ * page displays highest scores at the top and lowest at the bottom.
  * 
  */
 
 $(document).ready(() => {
-    highScores();
+    displayAllScores();
 
     // open menu when hovering over hamburger tab
     $('#tabContainer').on({
@@ -41,21 +44,6 @@ $(document).ready(() => {
         }
     });
 });
-
-function highScores() {
-    $.ajax({
-        url: '/get/highscores/',
-        data: {},
-        method: 'GET',
-        success: function(output) {
-            // console.log(output);
-            let scores = '<tr> <th>Username</th> <th>GameDate</th> <th>gameTime</th> <th>Scores</th> <th>Asteroids Spawned</th> <th>Asteroids Destroyed</th> </tr>' +
-                output;
-            $('#table').html(scores);
-        }
-    });
-}
-
 
 /* menu access */
 
@@ -116,6 +104,22 @@ function logout() {
             console.log(output);
             location.reload();
             window.location.replace('../index.html'); // removes history
+        }
+    });
+}
+
+/* all_scores functions */
+
+// by default will display games ordered by largest scores to least
+function displayAllScores() {
+    $.ajax({
+        url: '/get/allScores/',
+        data: {},
+        method: 'GET',
+        success: function(output) {
+            // console.log(output);
+            let scores = '<tr> <th>Username</th> <th>GameDate</th> <th>gameTime</th> <th>Scores</th> <th>rounds</th>  <th>Asteroids Spawned</th> <th>Asteroids Destroyed</th> <th>Enemies Spawned</th> <th>Enemies Destroyed</th> </tr>' + output;
+            $('#table').html(scores);
         }
     });
 }
