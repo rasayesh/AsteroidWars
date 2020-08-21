@@ -246,7 +246,7 @@ app.get('/update/chatroom/', (req, res) => {
 
 /* SERVER - ALLSCORES */
 
-// tells front end to display allScores
+// tells front end to display allScores default call, displays ordered by scores highest to lowest
 app.get('/get/allScores/', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'score': -1 }).exec((err, entry) => {
@@ -275,6 +275,428 @@ app.get('/get/allScores/', (req, res) => {
         }
     });
 });
+
+// username sends scores sorted by user
+app.get('/sort/username/', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'username': -1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// GameDate sends scores sorted by date
+app.get('/sort/date/', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'GameDate': -1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// score 1 sends scores sorted by user (highest to lowest)
+app.get('/sort/score/H2L', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'score': -1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// score 2 sends scores sorted by user (lowest to highest)
+app.get('/sort/score/L2H', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'score': 1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// rounds 1 sends rounds sorted by user (highest to lowest)
+app.get('/sort/rounds/H2L', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'rounds': -1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// rounds 2 sends rounds sorted by user (lowest to highest)
+app.get('/sort/rounds/L2H', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'rounds': 1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// asteroidsSpawned 1 sends rounds sorted by asteroidsSpawned (highest to lowest)
+app.get('/sort/asteroidsSpawned/H2L', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'asteroidsSpawned': -1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// asteroidsSpawned 2 sends rounds sorted by asteroidsSpawned (lowest to highest)
+app.get('/sort/asteroidsSpawned/L2H', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'asteroidsSpawned': 1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// asteroidsDestroyed 1 sends rounds sorted by asteroidsDestroyed (highest to lowest)
+app.get('/sort/asteroidsDestroyed/H2L', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'asteroidsDestroyed': -1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// asteroidsDestroyed 2 sends rounds sorted by asteroidsDestroyed (lowest to highest)
+app.get('/sort/asteroidsDestroyed/L2H', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'asteroidsDestroyed': 1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// enemiesSpawned 1 sends rounds sorted by enemiesSpawned (highest to lowest)
+app.get('/sort/enemiesSpawned/H2L', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'enemiesSpawned': -1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// enemiesSpawned 2 sends rounds sorted by enemiesSpawned (lowest to highest)
+app.get('/sort/enemiesSpawned/L2H', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'enemiesSpawned': 1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// enemiesDestroyed 1 sends rounds sorted by enemiesDestroyed (highest to lowest)
+app.get('/sort/enemiesDestroyed/H2L', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'enemiesDestroyed': -1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+// enemiesDestroyed 2 sends rounds sorted by enemiesDestroyed (lowest to highest)
+app.get('/sort/enemiesDestroyed/L2H', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'enemiesDestroyed': 1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                let output = '';
+                for (i in entry) {
+                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
+                        '<th>' + entry[i].gameDate + '</th>' +
+                        '<th>' + entry[i].gametime + '</th>' +
+                        '<th>' + entry[i].score + '</th>' +
+                        '<th>' + entry[i].rounds + '</th>' +
+                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
+                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
+                        '<th>' + entry[i].enemiesSpawned + '</th>' +
+                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
+                }
+                res.send(output);
+            }
+        }
+    });
+});
+
+
 
 /* SERVER - PROFILE */
 

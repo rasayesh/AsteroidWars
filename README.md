@@ -39,8 +39,10 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
 - [X] update Player schema to store new data about enemy ships (enemy killed / total enemy spawned) and add rounds
 - [X] change "high scores" to "all scores"
 - [X] re-design website
-- [ ] implement website skeleton
-- [ ] add ability to change ordering in both highscores menu and profile menu<br/>
+- [X] implement website skeleton
+- [X] add ability to change ordering in both highscores menu and profile menu<br/>
+      - order by usernames
+      - order by date
       - highest to lowest (score)<br/>
       - lowest to highest (score)<br/>
       - highest to lowest (rounds)<br/>

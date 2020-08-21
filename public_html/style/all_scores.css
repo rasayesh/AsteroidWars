@@ -148,11 +148,22 @@ th,
 td {
     border: 1px solid cornflowerblue;
     color: cornflowerblue;
-    font-size: 10pt;
-    padding: 5px;
+    font-size: 12pt;
+    padding: 2px;
     border-collapse: collapse;
 }
 
 table {
     margin: 0 auto;
+}
+
+#username,
+#date,
+#score,
+#rounds,
+#asteroidsSpawned,
+#asteroidsDestroyed,
+#enemiesSpawned,
+#enemiesDestroyed {
+    cursor: pointer;
 }
