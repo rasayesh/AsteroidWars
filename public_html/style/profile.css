@@ -1,66 +1,173 @@
 /**
  * @author Reza Munoz-Asayesh
  * @file profile.css 
- * @project Asteroid Miners
+ * @project Asteroid Wars
  * Description: This is the css file for styling of profile.html. This file is for 
  * creating the styling that will give the html divs positioning, color, dimension etc.
  * 
  */
 
 
-/* format page */
+/* global */
 
 * {
+    /* format page */
     margin: 0px;
     padding: 0px;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-#background {
+*:focus {
+    /* remove outline from all buttons when pressed */
+    outline: 0 !important;
+}
+
+.container {
     position: fixed;
-    color: orange;
-    background-image: url("../game/graphics/backgrounds/test2.png");
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#header {
-    font-size: 24pt;
-}
-
-#outputBar {
-    text-align: center;
-    padding: 20px;
-    position: fixed;
+    border-top: 2px cornflowerblue solid;
+    border-left: 2px cornflowerblue solid;
+    border-bottom: 2px cornflowerblue solid;
     background-color: black;
-    height: 80%;
+    box-sizing: border-box;
+    color: cornflowerblue;
+    width: 85%;
+    min-height: 150px;
+    height: 16%;
+    z-index: 1;
+    left: 0px;
+}
+
+.title {
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    font-size: 50pt;
+}
+
+
+/* hamburger tab */
+
+#tabContainer {
+    background-color: black;
+    border-top: 2px cornflowerblue solid;
+    border-right: 2px cornflowerblue solid;
+    border-bottom: 2px cornflowerblue solid;
+    box-sizing: border-box;
+    position: fixed;
+    right: 0px;
+    width: 15%;
+    min-width: 200px;
+    height: 150px;
+    z-index: 1;
+}
+
+#barBox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    background-color: cornflowerblue;
+    width: 55px;
+    height: 5px;
+    margin: 10px 0;
+}
+
+
+/* dropdown menu */
+
+#dropdownMenu {
+    box-sizing: border-box;
+    position: fixed;
+    top: 150px;
+    right: 0px;
+    display: none;
+    z-index: 1;
+}
+
+.button {
+    background-color: black;
+    border: 1px cornflowerblue solid;
+    color: cornflowerblue;
+    font-size: 14pt;
+    display: block;
+    padding: 40px;
+    width: 250px;
+    height: 100px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.button:hover {
+    background-color: cornflowerblue;
+    color: black;
+}
+
+
+/* content section taking bottom 85% of page */
+
+#content {
+    position: fixed;
+    height: 84%;
     width: 100%;
-    top: 10%;
+    top: 150px;
+    background-color: black;
+    color: cornflowerblue;
+    overflow: auto;
 }
 
-#profile {
-    text-align: left;
+#page {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    color: cornflowerblue;
 }
 
-#userGameHistory {
+#scoreOutput {
     text-align: center;
     font-size: 14pt;
     padding: 20px;
-    overflow: auto;
 }
 
 table,
 th,
 td {
-    border: 1px solid orange;
+    border: 1px solid cornflowerblue;
+    color: cornflowerblue;
     font-size: 12pt;
-    padding: 10px;
+    padding: 2px;
     border-collapse: collapse;
 }
 
 table {
     margin: 0 auto;
+}
+
+#username,
+#date,
+#score,
+#rounds,
+#asteroidsSpawned,
+#asteroidsDestroyed,
+#enemiesSpawned,
+#enemiesDestroyed {
+    cursor: pointer;
+}
+
+#credits {
+    position: fixed;
+    color: cornflowerblue;
+    bottom: 0px;
+    height: 20px;
+    left: 5px;
+    z-index: 1;
 }

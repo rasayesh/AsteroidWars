@@ -288,19 +288,7 @@ app.get('/sort/username/', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -318,19 +306,7 @@ app.get('/sort/date/', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -348,19 +324,7 @@ app.get('/sort/score/H2L', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -378,19 +342,7 @@ app.get('/sort/score/L2H', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -408,19 +360,7 @@ app.get('/sort/rounds/H2L', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -438,19 +378,7 @@ app.get('/sort/rounds/L2H', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -468,19 +396,7 @@ app.get('/sort/asteroidsSpawned/H2L', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -498,19 +414,7 @@ app.get('/sort/asteroidsSpawned/L2H', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -528,19 +432,7 @@ app.get('/sort/asteroidsDestroyed/H2L', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -558,19 +450,7 @@ app.get('/sort/asteroidsDestroyed/L2H', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -588,19 +468,7 @@ app.get('/sort/enemiesSpawned/H2L', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -618,19 +486,7 @@ app.get('/sort/enemiesSpawned/L2H', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -648,19 +504,7 @@ app.get('/sort/enemiesDestroyed/H2L', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });
@@ -678,19 +522,7 @@ app.get('/sort/enemiesDestroyed/L2H', (req, res) => {
                 console.log('Error: No GameData Found!');
                 res.status(404).send();
             } else {
-                let output = '';
-                for (i in entry) {
-                    output += '<tr>' + '<th>' + entry[i].username + '</th>' +
-                        '<th>' + entry[i].gameDate + '</th>' +
-                        '<th>' + entry[i].gametime + '</th>' +
-                        '<th>' + entry[i].score + '</th>' +
-                        '<th>' + entry[i].rounds + '</th>' +
-                        '<th>' + entry[i].asteroidsSpawned + '</th>' +
-                        '<th>' + entry[i].asteroidsDestroyed + '</th>' +
-                        '<th>' + entry[i].enemiesSpawned + '</th>' +
-                        '<th>' + entry[i].enemiesDestroyed + '</th>' + '<tr/>';
-                }
-                res.send(output);
+                res.send(entry);
             }
         }
     });

@@ -112,26 +112,28 @@ function logout() {
 // order flag -  if false then low to high
 let highToLow = true;
 
-// sort flag - if true then sorted by that one
-let username;
-let date;
-let scores;
-let rounds;
-let asteroidsSpawned;
-let asteroidsDestroyed;
-let enemiesSpawned;
-let enemiesDestroyed;
+// code to reduce repetitive loading of scores into chart
+function loadScores(output) {
+    let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>';
+    for (i in output) {
+        scores +=
+            '<tr>' +
+            '<th>' + output[i].username + '</th>' +
+            '<th>' + output[i].gameDate + '</th>' +
+            '<th>' + output[i].gametime + '</th>' +
+            '<th>' + output[i].score + '</th>' +
+            '<th>' + output[i].rounds + '</th>' +
+            '<th>' + output[i].asteroidsSpawned + '</th>' +
+            '<th>' + output[i].asteroidsDestroyed + '</th>' +
+            '<th>' + output[i].enemiesSpawned + '</th>' +
+            '<th>' + output[i].enemiesDestroyed + '</th>' +
+            '<tr/>';
+    }
+    return scores;
+}
 
 // sets all the orderings to false and resets the html of all the boxes
 function clearBools() {
-    username = false;
-    date = false;
-    scores = false;
-    rounds = false;
-    asteroidsSpawned = false;
-    asteroidsDestroyed = false;
-    enemiesSpawned = false;
-    enemiesDestroyed = false;
     $('#username').text('Username');
     $('#date').text('GameDate');
     $('#score').text('Scores');
@@ -149,8 +151,7 @@ function initializeAllScores() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#score').click(); // ordered highest to lowest score by default
         }
@@ -164,8 +165,7 @@ function orderByUser() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#username').text('Username●');
         }
@@ -179,10 +179,9 @@ function orderByDate() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
-            $('#date').text('GameDatehi●');
+            $('#date').text('GameDate●');
         }
     });
 }
@@ -194,8 +193,7 @@ function orderByScoreH2L() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#score').text('Scores↑');
         }
@@ -209,8 +207,7 @@ function orderByScoreL2H() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#score').text('Scores↓');
         }
@@ -224,8 +221,7 @@ function orderByRoundsH2L() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#rounds').text('Rounds↑');
         }
@@ -239,8 +235,7 @@ function orderByRoundsL2H() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#rounds').text('Rounds↓');
         }
@@ -254,8 +249,7 @@ function orderByAsteroidsSpawnedH2L() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#asteroidsSpawned').text('Asteroids Spawned↑');
         }
@@ -269,8 +263,7 @@ function orderByAsteroidsSpawnedL2H() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#asteroidsSpawned').text('Asteroids Spawned↓');
         }
@@ -284,8 +277,7 @@ function orderByAsteroidsDestroyedH2L() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#asteroidsDestroyed').text('Asteroids Destroyed↑');
         }
@@ -299,8 +291,7 @@ function orderByAsteroidsDestroyedL2H() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#asteroidsDestroyed').text('Asteroids Destroyed↓');
         }
@@ -314,8 +305,7 @@ function orderByEnemiesSpawnedH2L() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#enemiesSpawned').text('Enemies Spawned↑');
         }
@@ -329,8 +319,7 @@ function orderByEnemiesSpawnedL2H() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#enemiesSpawned').text('Enemies Spawned↓');
         }
@@ -344,8 +333,7 @@ function orderByEnemiesDestroyedH2L() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#enemiesDestroyed').text('Enemies Destroyed↑');
         }
@@ -359,8 +347,7 @@ function orderByEnemiesDestroyedL2H() {
         data: {},
         method: 'GET',
         success: function(output) {
-            let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>' + output;
-            $('#table').html(scores); // insert table into html
+            $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#enemiesDestroyed').text('Enemies Destroyed↓');
         }

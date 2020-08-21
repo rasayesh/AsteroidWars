@@ -128,16 +128,7 @@
     color: cornflowerblue;
 }
 
-#credits {
-    position: fixed;
-    color: cornflowerblue;
-    bottom: 0px;
-    height: 20px;
-    left: 5px;
-    z-index: 1;
-}
-
-#highScoreOutput {
+#scoreOutput {
     text-align: center;
     font-size: 14pt;
     padding: 20px;
@@ -166,4 +157,13 @@ table {
 #enemiesSpawned,
 #enemiesDestroyed {
     cursor: pointer;
+}
+
+#credits {
+    position: fixed;
+    color: cornflowerblue;
+    bottom: 0px;
+    height: 20px;
+    left: 5px;
+    z-index: 1;
 }

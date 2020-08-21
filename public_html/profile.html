@@ -22,28 +22,44 @@
 </head>
 
 <body>
-    <div id="background">
-        <div id="outputBar">
-            <!-- header/title -->
-            <div id='header'>
-                <h1 id='headingTitle'>Asteroid</h1>
-            </div>
-            <h2>User Profile</h2>
-            <br/>
-            <div id="profile">
-                <h2>User: <span id="username"></span></h2>
-                <br/>
-                <h2>Account Creation Date: <span id="accountCreationDate"></span></h2>
-                <br/>
-                <h2>Game History (by Date oldest->newest):</h2>
-                <div id="userGameHistory">
-                    <table id="table">
+    <!-- header container -->
+    <div class="container">
+        <h1 class="title">Asteroid Wars</h1>
+    </div>
+    <div id="tabContainer">
+        <div id="barBox">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+    </div>
 
-                    </table>
-                </div>
+    <!-- drop down menu div -->
+    <div id="dropdownMenu">
+        <input id="home" class="button" value="Home" type="button" onclick="">
+        <input id="play" class="button" value="Play Game" type="button" onclick="playGame();">
+        <input id="scores" class="button" value="All Scores" type="button" onclick="allScores();">
+        <input id="chatRoom" class="button" value="Chat Room" type="button" onclick="chatRoom();">
+        <input id="profile" class="button" value="Profile" type="button" onclick="profile();">
+        <input id="logout" class="button" value="Logout" type="button" onclick="logout();">
+    </div>
+
+    <!-- content section -->
+    <div id="content">
+        <!-- current page -->
+        <div id="page">
+            <h1 id="userProfile"></h1>
+            <div id="accountCreationDate"></div>
+            <div id="scoreOutput">
+                <table id="table"></table>
+                <br/>
+                <br/>
             </div>
         </div>
     </div>
+
+    <!-- credits at bottom of page -->
+    <h3 id="credits">By Reza Munoz-Asayesh</h3>
 </body>
 
 </html>
