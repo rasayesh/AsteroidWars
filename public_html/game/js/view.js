@@ -81,7 +81,6 @@ function cycleGame() {
 /* set all game booleans to initial status and create new model/controller connection */
 function initializeGame() {
     engineBurstSoundBoolOn = false;
-    //thrust = false;
     turnLeft = false;
     turnRight = false;
     fireCannon = false;
@@ -422,8 +421,8 @@ function backToMenu() {
         method: 'GET',
         success: function(output) {
             console.log(output);
-            //window.location = '../../main_menu.html';
-            window.location.replace('../../main_menu.html')
+            //window.location = '../../home.html';
+            window.location.replace('../../home.html')
         }
     });
 }
