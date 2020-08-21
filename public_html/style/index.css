@@ -1,82 +1,153 @@
 /**
  * @author Reza Munoz-Asayesh
  * @file index.css 
- * @project Asteroid Miners
+ * @project Asteroid Wars
  * Description: This is the css file for styling of index.html. This file is for 
  * creating the styling that will give the html divs positioning, color, dimension etc.
  * 
  */
 
 
-/* format page */
+/* global */
 
 * {
+    /* format page */
     margin: 0px;
     padding: 0px;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-#background {
+*:focus {
+    /* remove outline from all buttons when pressed */
+    outline: 0 !important;
+}
+
+.container {
     position: fixed;
-    color: orange;
-    background-image: url("../game/graphics/backgrounds/test2.png");
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#header {
-    font-size: 24pt;
-}
-
-#inputBar {
-    position: fixed;
+    border: 2px cornflowerblue solid;
     background-color: black;
-    height: 33%;
+    box-sizing: border-box;
+    color: cornflowerblue;
     width: 100%;
-    top: 32%;
-    min-height: 380px;
+    min-height: 150px;
+    z-index: 1;
 }
 
-#inputBarContent {
+.title {
     position: absolute;
-    width: 33%;
-    left: 34%;
-    text-align: center;
+    bottom: 0px;
+    left: 5px;
+    font-size: 50pt;
 }
 
-#username,
-#password {
-    font-size: larger;
+#signupContainer,
+#loginContainer {
+    display: none;
+}
+
+
+/* 1st initial div shown top 15% of page*/
+
+.directoryButton {
+    background-color: black;
+    color: cornflowerblue;
+    position: absolute;
+    border: none;
+    width: 15%;
+    min-width: 150px;
+    height: 100%;
+    transition: all 0.4s;
+    cursor: pointer;
+    font-size: 16pt;
+}
+
+.directoryButton:hover {
+    background-color: cornflowerblue;
+    color: black;
+}
+
+#loginButton {
+    border-left: 2px cornflowerblue solid;
+    right: 15%;
+}
+
+#signUpButton {
+    border-left: 2px cornflowerblue solid;
+    right: 0px;
+}
+
+#loginInformation {
+    position: absolute;
+    right: 70px;
+    padding: 20px;
+}
+
+.userInput {
+    background: black;
+    border: 1px cornflowerblue solid;
+    margin-bottom: 5px;
+    padding: 3px;
+    font-size: 12pt;
+    color: whitesmoke;
 }
 
 .button {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 16px;
+    background-color: black;
+    padding: 6px 12px 6px 12px;
+    transition: all 0.4s;
     cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: steelblue;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 9px #999;
+    border: 1px cornflowerblue solid;
+    color: cornflowerblue;
+    float: right;
 }
 
 .button:hover {
-    background-color: rgb(44, 109, 163);
+    background-color: cornflowerblue;
+    color: black;
 }
 
-.button:active {
-    background-color: rgb(44, 109, 163);
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+.back {
+    margin-right: 5px;
 }
 
 #incorrectCredentialsError {
     color: red;
+    font-size: 8pt;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#signupInformation {
+    position: absolute;
+    right: 70px;
+    padding: 5px;
+    font-size: 16pt;
+}
+
+#passwordDontMatchError {
+    display: inline;
+    color: red;
+    font-size: 8pt;
+    margin-right: 12px;
+}
+
+
+/* content section taking bottom 85% of page */
+
+#content {
+    position: fixed;
+    height: 85%;
+    width: 100%;
+    bottom: 0px;
+    background-color: black;
+}
+
+#credits {
+    position: absolute;
+    color: cornflowerblue;
+    bottom: 0px;
+    left: 5px;
 }

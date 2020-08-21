@@ -2,7 +2,7 @@
 /**
  * @author Reza Munoz-Asayesh
  * @file index.html 
- * @project AsteroidR
+ * @project Asteroid Wars
  * @description This program, contains the content for the login page,
  * of the asteroid website.
  * 
@@ -17,40 +17,48 @@
     <link rel="stylesheet" type="text/css" href="./style/index.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/index.js"></script>
-    <title>Login</title>
+    <title>Welcome</title>
 </head>
 
 <body>
+    <!-- welcome container -->
+    <div class="container" id="directoryContainer">
+        <h1 class="title">Asteroid Wars</h1>
+        <input class="directoryButton" id="loginButton" type='button' value='Login' onclick='showLogin();'>
+        <input class="directoryButton" id="signUpButton" type='button' value='Sign up' onclick='showSignup();'>
+    </div>
 
-    <div id="background">
-        <div id="inputBar">
-            <div id="inputBarContent">
-                <!-- header/title -->
-                <div id="header">
-                    <h1 id="headingTitle">Asteroid</h1>
-                </div>
-                <!-- log in -->
-                <div>
-                    <h2>Login</h2>
-                    <br/>
-                    <input id='username' placeholder='username' type='text'>
-                    <br/>
-                    <br/>
-                    <input id='password' type='password' placeholder='Password' required>
-                    <br/>
-                    <div id="incorrectCredentialsError"></div>
-                    <br/>
-                    <input class="button" type="button" value="Login" onclick="login();">
-                    <br/>
-                    <br/>
-
-                </div>
-                <div>
-                    <input class="button" type="button" value="create account" onclick="goToCreateAccount();">
-                </div>
-            </div>
+    <!-- login container -->
+    <div class="container" id="loginContainer">
+        <h1 class="title">Asteroid Wars</h1>
+        <div id="loginInformation">
+            <input class="userInput" id='loginUsername' placeholder='Username' type='text'><br/>
+            <input class="userInput" id='loginPassword' type='password' placeholder='Password' required><br/>
+            <div id="incorrectCredentialsError"></div>
+            <input class="button" type="button" value="Login" onclick="login();">
+            <input class="button back" type="button" value="Back" onclick="back();">
         </div>
     </div>
+
+    <!-- signup container -->
+    <div class="container" id="signupContainer">
+        <h1 class="title">Asteroid Wars</h1>
+        <div id="signupInformation">
+            <input class="userInput" id='username' placeholder='Username' type='text'><br/>
+            <input class="userInput" id='password' type='password' placeholder='Password'><br/>
+            <input class="userInput" id='confirmPassword' type='password' placeholder='Confirm Password'><br/>
+            <div id="passwordDontMatchError"></div>
+            <input class="button" type='button' value='finish' onclick='validatePassword();'>
+            <input class="button back" type="button" value="Back" onclick="back();">
+        </div>
+    </div>
+
+    <!-- content section -->
+    <div id="content">
+        <!-- credits at bottom of page -->
+        <h3 id="credits">By Reza Munoz-Asayesh</h3>
+    </div>
+
 </body>
 
 </html>
