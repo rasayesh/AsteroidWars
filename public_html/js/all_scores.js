@@ -114,13 +114,13 @@ let highToLow = true;
 
 // code to reduce repetitive loading of scores into chart
 function loadScores(output) {
-    let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th>gameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>';
+    let scores = '<tr> <th id=\'username\'>Username</th> <th id=\'date\'>GameDate</th> <th id=\'time\'>GameTime</th> <th id=\'score\'>Scores</th> <th id=\'rounds\'>Rounds</th>  <th id=\'asteroidsSpawned\'>Asteroids Spawned</th> <th id=\'asteroidsDestroyed\'>Asteroids Destroyed</th> <th id=\'enemiesSpawned\'>Enemies Spawned</th> <th id=\'enemiesDestroyed\'>Enemies Destroyed</th> </tr>';
     for (i in output) {
         scores +=
             '<tr>' +
             '<th>' + output[i].username + '</th>' +
             '<th>' + output[i].gameDate + '</th>' +
-            '<th>' + output[i].gametime + '</th>' +
+            '<th>' + msToTime(output[i].gametime) + '</th>' +
             '<th>' + output[i].score + '</th>' +
             '<th>' + output[i].rounds + '</th>' +
             '<th>' + output[i].asteroidsSpawned + '</th>' +
@@ -132,10 +132,25 @@ function loadScores(output) {
     return scores;
 }
 
+// convert milliseconds to time format
+function msToTime(duration) {
+    var milliseconds = parseInt((duration % 1000) / 100),
+        seconds = Math.floor((duration / 1000) % 60),
+        minutes = Math.floor((duration / (1000 * 60)) % 60),
+        hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+    return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+}
+
 // sets all the orderings to false and resets the html of all the boxes
 function clearBools() {
     $('#username').text('Username');
     $('#date').text('GameDate');
+    $('#time').text('GameTime')
     $('#score').text('Scores');
     $('#rounds').text('Rounds');
     $('#asteroidsSpawned').text('Asteroids Spawned');
@@ -182,6 +197,34 @@ function orderByDate() {
             $('#table').html(loadScores(output)); // insert table into html
             linkIDs();
             $('#date').text('GameDate●');
+        }
+    });
+}
+
+// orders scores by time highest to lowest
+function orderByTimeH2L() {
+    $.ajax({
+        url: '/sort/time/H2L',
+        data: {},
+        method: 'GET',
+        success: function(output) {
+            $('#table').html(loadScores(output)); // insert table into html
+            linkIDs();
+            $('#time').text('GameTime↑');
+        }
+    });
+}
+
+// orders scores by time lowest to highest
+function orderByTimeL2H() {
+    $.ajax({
+        url: '/sort/time/L2H',
+        data: {},
+        method: 'GET',
+        success: function(output) {
+            $('#table').html(loadScores(output)); // insert table into html
+            linkIDs();
+            $('#time').text('GameTime↓');
         }
     });
 }
@@ -365,6 +408,17 @@ function linkIDs() {
     $('#date').click(() => {
         clearBools();
         orderByDate();
+    });
+    // order by time
+    $('#time').click(() => {
+        clearBools();
+        if (highToLow) {
+            highToLow = false;
+            orderByTimeH2L();
+        } else {
+            highToLow = true;
+            orderByTimeL2H();
+        }
     });
     // order by score
     $('#score').click(() => {

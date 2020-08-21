@@ -63,7 +63,7 @@ var ChatMessage = mongoose.model('ChatMessage', ChatMessageSchema);
 let GameDataSchema = new Schema({
     username: String,
     gameDate: String,
-    gametime: String,
+    gametime: Number,
     score: Number,
     rounds: Number,
     enemiesDestroyed: Number,
@@ -276,7 +276,7 @@ app.get('/get/allScores/', (req, res) => {
     });
 });
 
-// username sends scores sorted by user
+// username sends scores sorted by username
 app.get('/sort/username/', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'username': -1 }).exec((err, entry) => {
@@ -294,7 +294,7 @@ app.get('/sort/username/', (req, res) => {
     });
 });
 
-// GameDate sends scores sorted by date
+// GameDate sends scores sorted by GameDate
 app.get('/sort/date/', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'GameDate': -1 }).exec((err, entry) => {
@@ -312,7 +312,43 @@ app.get('/sort/date/', (req, res) => {
     });
 });
 
-// score 1 sends scores sorted by user (highest to lowest)
+// gametime 1 sends scores sorted by gametime (highest to lowest)
+app.get('/sort/time/H2L', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'gametime': -1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                res.send(entry);
+            }
+        }
+    });
+});
+
+// gametime 2 sends scores sorted by gametime (lowest to highest)
+app.get('/sort/time/L2H', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    GameData.find({}).sort({ 'gametime': 1 }).exec((err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: No GameData Found!');
+                res.status(404).send();
+            } else {
+                res.send(entry);
+            }
+        }
+    });
+});
+
+// score 1 sends scores sorted by score (highest to lowest)
 app.get('/sort/score/H2L', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'score': -1 }).exec((err, entry) => {
@@ -330,7 +366,7 @@ app.get('/sort/score/H2L', (req, res) => {
     });
 });
 
-// score 2 sends scores sorted by user (lowest to highest)
+// score 2 sends scores sorted by score (lowest to highest)
 app.get('/sort/score/L2H', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'score': 1 }).exec((err, entry) => {
@@ -348,7 +384,7 @@ app.get('/sort/score/L2H', (req, res) => {
     });
 });
 
-// rounds 1 sends rounds sorted by user (highest to lowest)
+// rounds 1 sends scores sorted by rounds (highest to lowest)
 app.get('/sort/rounds/H2L', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'rounds': -1 }).exec((err, entry) => {
@@ -366,7 +402,7 @@ app.get('/sort/rounds/H2L', (req, res) => {
     });
 });
 
-// rounds 2 sends rounds sorted by user (lowest to highest)
+// rounds 2 sends scores sorted by rounds (lowest to highest)
 app.get('/sort/rounds/L2H', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'rounds': 1 }).exec((err, entry) => {
@@ -384,7 +420,7 @@ app.get('/sort/rounds/L2H', (req, res) => {
     });
 });
 
-// asteroidsSpawned 1 sends rounds sorted by asteroidsSpawned (highest to lowest)
+// asteroidsSpawned 1 sends scores sorted by asteroidsSpawned (highest to lowest)
 app.get('/sort/asteroidsSpawned/H2L', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'asteroidsSpawned': -1 }).exec((err, entry) => {
@@ -402,7 +438,7 @@ app.get('/sort/asteroidsSpawned/H2L', (req, res) => {
     });
 });
 
-// asteroidsSpawned 2 sends rounds sorted by asteroidsSpawned (lowest to highest)
+// asteroidsSpawned 2 sends scores sorted by asteroidsSpawned (lowest to highest)
 app.get('/sort/asteroidsSpawned/L2H', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'asteroidsSpawned': 1 }).exec((err, entry) => {
@@ -420,7 +456,7 @@ app.get('/sort/asteroidsSpawned/L2H', (req, res) => {
     });
 });
 
-// asteroidsDestroyed 1 sends rounds sorted by asteroidsDestroyed (highest to lowest)
+// asteroidsDestroyed 1 sends scores sorted by asteroidsDestroyed (highest to lowest)
 app.get('/sort/asteroidsDestroyed/H2L', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'asteroidsDestroyed': -1 }).exec((err, entry) => {
@@ -438,7 +474,7 @@ app.get('/sort/asteroidsDestroyed/H2L', (req, res) => {
     });
 });
 
-// asteroidsDestroyed 2 sends rounds sorted by asteroidsDestroyed (lowest to highest)
+// asteroidsDestroyed 2 sends scores sorted by asteroidsDestroyed (lowest to highest)
 app.get('/sort/asteroidsDestroyed/L2H', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'asteroidsDestroyed': 1 }).exec((err, entry) => {
@@ -456,7 +492,7 @@ app.get('/sort/asteroidsDestroyed/L2H', (req, res) => {
     });
 });
 
-// enemiesSpawned 1 sends rounds sorted by enemiesSpawned (highest to lowest)
+// enemiesSpawned 1 sends scores sorted by enemiesSpawned (highest to lowest)
 app.get('/sort/enemiesSpawned/H2L', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'enemiesSpawned': -1 }).exec((err, entry) => {
@@ -474,7 +510,7 @@ app.get('/sort/enemiesSpawned/H2L', (req, res) => {
     });
 });
 
-// enemiesSpawned 2 sends rounds sorted by enemiesSpawned (lowest to highest)
+// enemiesSpawned 2 sends scores sorted by enemiesSpawned (lowest to highest)
 app.get('/sort/enemiesSpawned/L2H', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'enemiesSpawned': 1 }).exec((err, entry) => {
@@ -492,7 +528,7 @@ app.get('/sort/enemiesSpawned/L2H', (req, res) => {
     });
 });
 
-// enemiesDestroyed 1 sends rounds sorted by enemiesDestroyed (highest to lowest)
+// enemiesDestroyed 1 sends scores sorted by enemiesDestroyed (highest to lowest)
 app.get('/sort/enemiesDestroyed/H2L', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'enemiesDestroyed': -1 }).exec((err, entry) => {
@@ -510,7 +546,7 @@ app.get('/sort/enemiesDestroyed/H2L', (req, res) => {
     });
 });
 
-// enemiesDestroyed 2 sends rounds sorted by enemiesDestroyed (lowest to highest)
+// enemiesDestroyed 2 sends scores sorted by enemiesDestroyed (lowest to highest)
 app.get('/sort/enemiesDestroyed/L2H', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'enemiesDestroyed': 1 }).exec((err, entry) => {

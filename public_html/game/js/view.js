@@ -389,7 +389,7 @@ function updateUserGames() {
     var today = new Date();
     var d = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     let u = user;
-    let t = $('#timeElapsed')[0].innerHTML;
+    let t = timeElapsed;
     let s = model.playerScore;
     let r = model.round;
     let ed = model.enemiesDestroyed;
