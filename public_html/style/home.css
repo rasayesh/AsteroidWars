@@ -1,8 +1,8 @@
 /**
  * @author Reza Munoz-Asayesh
- * @file all_scores.css 
+ * @file index.css 
  * @project Asteroid Wars
- * Description: This is the css file for styling of all_scores.html. This file is for 
+ * Description: This is the css file for styling of index.html. This file is for 
  * creating the styling that will give the html divs positioning, color, dimension etc.
  * 
  */
@@ -137,24 +137,4 @@
     height: 20px;
     left: 5px;
     z-index: 1;
-}
-
-#highScoreOutput {
-    text-align: center;
-    font-size: 14pt;
-    padding: 20px;
-    overflow: auto;
-}
-
-table,
-th,
-td {
-    border: 1px solid orange;
-    font-size: 12pt;
-    padding: 10px;
-    border-collapse: collapse;
-}
-
-table {
-    margin: 0 auto;
 }

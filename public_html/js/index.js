@@ -2,7 +2,10 @@
  * @author Reza Munoz-Asayesh
  * @file index.js 
  * @project Asteroid Wars
- * @description 
+ * @description This js page controls the functionality of the welcome page, this is the first
+ * page users see when they go to this website, this handles the ajax requests and posts to the 
+ * server for login and account creation information. This also will send the user to the main
+ * menu of the site on successful login.
  * 
  */
 
@@ -33,7 +36,6 @@ function back() {
     $('#signupContainer').css('display', 'none');
 }
 
-
 // validate the passwords by confirming matching passwords before user creates an account
 function validatePassword() {
     let password = $('#password').val();
@@ -46,7 +48,6 @@ function validatePassword() {
             .css('color', 'red');
     }
 }
-
 
 // This function logs a user into the site, making sure information matches that in database
 function login() {
@@ -64,12 +65,11 @@ function login() {
                 .html('Issue logging in with that info')
                 .css('color', 'red');
             else {
-                window.location = '../main_menu.html';
+                window.location = '../home.html';
             }
         }
     });
 }
-
 
 // This function adds a user to the database by taking inputs of username and password 
 // and sending them over to the server, via JSON format.

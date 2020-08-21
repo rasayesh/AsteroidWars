@@ -1,10 +1,49 @@
 /**
  * @author Reza Munoz-Asayesh
  * @file main_menu.js 
- * @project Asteroid Miners
+ * @project Asteroid Wars
  * @description 
  * 
  */
+
+
+$(document).ready(() => {
+    // open menu when hovering over hamburger tab
+    $('#tabContainer').on({
+        mouseenter: () => {
+            $('#dropdownMenu').css('display', 'block');
+            $('.button').css('display', 'block')
+        }
+    });
+
+    // close menu when user takes mouse off menu
+    $('#dropdownMenu').on({
+        mouseleave: () => {
+            $('#dropdownMenu').css('display', 'none');
+            $('.button').css('display', 'none')
+        }
+    });
+
+    // close menu when user takes mouse off menu
+    $('#content').on({
+        mouseenter: () => {
+            $('#dropdownMenu').css('display', 'none');
+            $('.button').css('display', 'none')
+        }
+    });
+
+    // close menu when user takes mouse off menu
+    $('.container').on({
+        mouseenter: () => {
+            $('#dropdownMenu').css('display', 'none');
+            $('.button').css('display', 'none')
+        }
+    });
+
+});
+
+
+/* menu access */
 
 function playGame() {
     $.ajax({
@@ -18,26 +57,14 @@ function playGame() {
     });
 }
 
-function highScores() {
+function allScores() {
     $.ajax({
-        url: '/highscores/',
+        url: '/allScores/',
         data: {},
         method: 'GET',
         success: function(output) {
             console.log(output);
             window.location = '../all_scores.html';
-        }
-    });
-}
-
-function profile() {
-    $.ajax({
-        url: '/profile/',
-        data: {},
-        method: 'GET',
-        success: function(output) {
-            console.log(output);
-            window.location = '../profile.html';
         }
     });
 }
@@ -54,14 +81,14 @@ function chatRoom() {
     });
 }
 
-function credits() {
+function profile() {
     $.ajax({
-        url: '/credits/',
+        url: '/profile/',
         data: {},
         method: 'GET',
         success: function(output) {
             console.log(output);
-            window.location = '../credits.html';
+            window.location = '../profile.html';
         }
     });
 }

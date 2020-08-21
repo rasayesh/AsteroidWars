@@ -59,7 +59,7 @@ var ChatMessageSchema = new Schema({
 });
 var ChatMessage = mongoose.model('ChatMessage', ChatMessageSchema);
 
-// User HighScore Game Data.
+// User Game Data.
 let GameDataSchema = new Schema({
     username: String,
     gameDate: String,
@@ -188,10 +188,10 @@ app.get('/game/', (req, res) => { // may need to add a different addition to mak
     res.send('play_game');
 });
 
-// tells front end to go to highscores page.
-app.get('/highscores/', (req, res) => {
+// tells front end to go to allScores page.
+app.get('/allScores/', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
-    res.send('goto_highscores');
+    res.send('goto_allScores');
 });
 
 // tells front end to go to profile page.
@@ -244,10 +244,10 @@ app.get('/update/chatroom/', (req, res) => {
     });
 });
 
-/* SERVER - HIGHSCORES */
+/* SERVER - ALLSCORES */
 
-// tells front end to display highscores
-app.get('/get/highscores/', (req, res) => {
+// tells front end to display allScores
+app.get('/get/allScores/', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     GameData.find({}).sort({ 'score': -1 }).exec((err, entry) => {
         if (err) {
