@@ -55,10 +55,10 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
       - lowest to highest (asteroids destroyed)<br/>
       - highest to lowest (asteroids spawned)<br/>
       - lowest to highest (asteroids spawned)<br/>
-- [ ] redesign messaging system
-- [ ] design home page
-- [ ] make video of game 
+- [X] update game startmenu/endmenu/pausemenu aesthetics
+- [X] redesign messaging system
+- [ ] add chat history to profile
 - [ ] update game directions
-- [ ] update game startmenu/endmenu/pausemenu aesthetics
+- [ ] design home page
 - [ ] add favicon
 - [ ] add domain name to website.

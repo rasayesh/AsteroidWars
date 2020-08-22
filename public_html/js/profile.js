@@ -2,7 +2,9 @@
  * @author Reza Munoz-Asayesh
  * @file profile.js 
  * @project Asteroid Wars
- * @description 
+ * @description This js page provides functionality to see the users profile information
+ * such as when it was created, previous games and previous chats messages sent in the 
+ * global chat.
  * 
  */
 
@@ -46,6 +48,18 @@ $(document).ready(() => {
 
 
 /* menu access */
+
+function home() {
+    $.ajax({
+        url: '/home/',
+        data: {},
+        method: 'GET',
+        success: function(output) {
+            console.log(output);
+            window.location = '../home.html';
+        }
+    });
+}
 
 function playGame() {
     $.ajax({
@@ -119,7 +133,7 @@ function profile() {
             //console.log(output);
             thisUser = output.username;
             let creationDate = output.creationDate;
-            $('#userProfile').html(thisUser + '\'s Profile');
+            $('#userProfile').html(thisUser.toUpperCase() + '\'S PROFILE');
             $('#accountCreationDate').html('Creation Date: ' + creationDate);
             initializeAllScores();
         }

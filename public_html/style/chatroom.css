@@ -1,97 +1,200 @@
 /**
  * @author Reza Munoz-Asayesh
  * @file chatroom.css 
- * @project Asteroid Miners
+ * @project Asteroid Wars
  * Description: This is the css file for styling of chatroom.html. This file is for 
  * creating the styling that will give the html divs positioning, color, dimension etc.
  * 
  */
 
 
-/* format page */
+/* global */
 
 * {
+    /* format page */
     margin: 0px;
     padding: 0px;
-    font-family: 'Courier New', Courier, monospace;
-    color: orange;
+    /* font-family: 'Courier New', Courier, monospace; */
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+*:focus {
+    /* remove outline from all buttons when pressed */
+    outline: 0 !important;
+}
 
-/* split page into two divs */
-
-#outputSection {
+.container {
+    position: fixed;
+    border-top: 2px cornflowerblue solid;
+    border-left: 2px cornflowerblue solid;
+    border-bottom: 2px cornflowerblue solid;
     background-color: black;
-    position: fixed;
-    height: 70%;
-    width: 100%;
-    top: 0px;
+    box-sizing: border-box;
+    color: cornflowerblue;
+    width: 85%;
+    min-height: 150px;
+    height: 16%;
+    z-index: 1;
     left: 0px;
-    font-size: large;
 }
 
-#inputSection {
-    background-color: grey;
-    border-top: solid steelblue 6px;
-    position: fixed;
-    height: 30%;
-    width: 100%;
+.title {
+    position: absolute;
     bottom: 0px;
-    left: 0px;
+    left: 5px;
+    font-size: 50pt;
 }
 
 
-/* style labels and inputs */
+/* hamburger tab */
 
-.textInput {
-    font-size: 16pt;
-    display: inline-block;
-    text-align: right;
-    width: 32%;
-    margin-top: 40px;
-    color: black;
+#tabContainer {
+    background-color: black;
+    border-top: 2px cornflowerblue solid;
+    border-right: 2px cornflowerblue solid;
+    border-bottom: 2px cornflowerblue solid;
+    box-sizing: border-box;
+    position: fixed;
+    right: 0px;
+    width: 15%;
+    height: 16%;
+    min-width: 200px;
+    min-height: 150px;
+    z-index: 1;
+}
+
+#barBox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    background-color: cornflowerblue;
+    width: 55px;
+    height: 5px;
+    margin: 10px 0;
+}
+
+
+/* dropdown menu */
+
+#dropdownMenu {
+    box-sizing: border-box;
+    position: fixed;
+    top: 150px;
+    right: 0px;
+    display: none;
+    z-index: 1;
 }
 
 .button {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 16px;
+    background-color: black;
+    border: 1px cornflowerblue solid;
+    color: cornflowerblue;
+    font-size: 14pt;
+    display: block;
+    padding: 40px;
+    width: 250px;
+    height: 100px;
     cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: steelblue;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 9px #999;
-    margin-top: 40px;
-    margin-left: 40%;
-    /* margin: 30px auto;
-    display: block; */
+    transition: 0.4s;
 }
 
 .button:hover {
-    background-color: rgb(44, 109, 163);
+    background-color: cornflowerblue;
+    color: black;
 }
 
-.button:active {
-    background-color: rgb(44, 109, 163);
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+
+/* content section taking bottom 85% of page */
+
+#content {
+    position: fixed;
+    height: 84%;
+    width: 100%;
+    top: 150px;
+    background-color: black;
 }
 
-#messageInput {
-    text-align: left;
+#page {
+    width: 100%;
+    text-align: center;
+    color: cornflowerblue;
 }
 
-label {
-    color: whitesmoke;
+#usersBox {
+    border: 1px cornflowerblue solid;
+    position: absolute;
+    width: 25%;
+    height: 80%;
+    top: 70px;
+    left: 65%;
+}
+
+#chatBox {
+    position: absolute;
+    border: 1px cornflowerblue solid;
+    width: 50%;
+    height: 80%;
+    top: 70px;
+    margin-left: 10%;
 }
 
 #messages {
-    color: orange;
+    position: absolute;
+    box-sizing: border-box;
     overflow: auto;
-    margin: 30px;
-    height: 93%;
+    text-align: left;
+    padding: 10px;
+    color: wheat;
+    height: 90%;
+}
+
+#userInputContainer {
+    position: absolute;
+    border-top: 1px cornflowerblue solid;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    bottom: 0px;
+}
+
+.userInput {
+    color: cornflowerblue;
+    background-color: black;
+    border: none;
+    height: 30pt;
+    font-size: larger;
+}
+
+#sendInput {
+    width: 90%;
+    color: wheat;
+}
+
+#sendButton {
+    cursor: pointer;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+#sendButton:hover {
+    background-color: cornflowerblue;
+    color: black;
+}
+
+#credits {
+    position: fixed;
+    color: cornflowerblue;
+    bottom: 0px;
+    height: 20px;
+    left: 5px;
+    z-index: 1;
 }

@@ -47,6 +47,18 @@ $(document).ready(() => {
 
 /* menu access */
 
+function home() {
+    $.ajax({
+        url: '/home/',
+        data: {},
+        method: 'GET',
+        success: function(output) {
+            console.log(output);
+            window.location = '../home.html';
+        }
+    });
+}
+
 function playGame() {
     $.ajax({
         url: '/game/',

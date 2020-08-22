@@ -421,9 +421,9 @@ function updateUserGames() {
     });
 }
 
-function backToMenu() {
+function backToHome() {
     $.ajax({
-        url: '/menu/',
+        url: '/home/',
         data: {},
         method: 'GET',
         success: function(output) {

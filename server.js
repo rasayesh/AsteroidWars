@@ -180,7 +180,13 @@ app.get('/login/:username/:password', (req, res) => {
     });
 });
 
-/* SERVER - MAIN MENU */
+/* SERVER - MENU */
+
+// tells front end to go to home page.
+app.get('/home/', (req, res) => {
+    resetSessionTime(req, res); // user is active so reset their time to current.
+    res.send('goto_home');
+});
 
 // tells front end to go to game page.
 app.get('/game/', (req, res) => { // may need to add a different addition to make cookie time extra long when this is called----------------------------
@@ -194,22 +200,16 @@ app.get('/allScores/', (req, res) => {
     res.send('goto_allScores');
 });
 
-// tells front end to go to profile page.
-app.get('/profile/', (req, res) => {
-    resetSessionTime(req, res); // user is active so reset their time to current.
-    res.send('goto_profile');
-});
-
 // tells front end to go to chat page.
 app.get('/chatroom/', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     res.send('goto_chatroom');
 });
 
-// tells front end to go to credits page.
-app.get('/credits/', (req, res) => {
+// tells front end to go to profile page.
+app.get('/profile/', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
-    res.send('goto_credits');
+    res.send('goto_profile');
 });
 
 // remove session from array & set cookie MaxAge to 1 (delete cookie).
@@ -593,13 +593,6 @@ app.get('/get/profile/', (req, res) => {
 app.get('/get/username/', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     res.send(req.cookies.login.username);
-});
-
-
-// sends user to main menu.
-app.get('/menu/', (req, res) => {
-    resetSessionTime(req, res); // user is active so reset their time to current.
-    res.send('redirect_to_menu');
 });
 
 // add game to data database of games.
