@@ -133,9 +133,9 @@
     color: cornflowerblue;
 }
 
-#scoreOutput {
+.outputDisplay {
     text-align: center;
-    font-size: 14pt;
+    font-size: 16pt;
     padding: 20px;
 }
 
@@ -149,8 +149,28 @@ td {
     border-collapse: collapse;
 }
 
+td {
+    word-wrap: break-word;
+}
+
 table {
     margin: 0 auto;
+    width: 100%;
+}
+
+#messageTable {
+    border-spacing: 0px;
+    table-layout: fixed;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#messageTable tr th {
+    word-wrap: break-word;
+}
+
+#messageInner {
+    text-align: left;
 }
 
 #username,

@@ -225,12 +225,29 @@ app.get('/logout/', (req, res) => {
 
 // get message from client side and save to database.
 app.post('/post/chat/', (req, res) => {
+    let currentUser = req.cookies.login.username
     var message = new ChatMessage({
         time: new Date().getTime(), // time is retrieved from server
-        user: req.cookies.login.username,
+        user: currentUser,
         message: req.body.message
     });
     message.save(function(err) { if (err) console.log('ERROR: Saving Chat Message!') });
+    User.findOne({ username: currentUser }, (err, entry) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send();
+        } else {
+            if (!entry) {
+                console.log('Error: User Not Found!');
+                res.status(404).send();
+            } else {
+                entry.messageHistory.push(message._id); // update gameHistory list with new game.
+                entry.save();
+                console.log('message history for ' + currentUser + ' successfully updated!');
+                res.send();
+            }
+        }
+    });
 });
 
 // sort data base by time & update client side.
@@ -572,7 +589,7 @@ app.get('/sort/enemiesDestroyed/L2H', (req, res) => {
 app.get('/get/profile/', (req, res) => {
     let un = req.cookies.login.username;
     resetSessionTime(req, res); // user is active so reset their time to current.
-    User.findOne({ username: un }).populate('gameHistory').exec((err, entry) => {
+    User.findOne({ username: un }).populate('messageHistory').exec((err, entry) => {
         if (err) {
             console.log(err);
             res.status(500).send();

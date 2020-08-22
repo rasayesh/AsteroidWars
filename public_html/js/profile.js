@@ -130,12 +130,24 @@ function profile() {
         data: {},
         method: 'GET',
         success: function(output) {
-            //console.log(output);
+            console.log(output);
             thisUser = output.username;
             let creationDate = output.creationDate;
             $('#userProfile').html(thisUser.toUpperCase() + '\'S PROFILE');
             $('#accountCreationDate').html('Creation Date: ' + creationDate);
             initializeAllScores();
+            let messageHistory = '<tr> <th id=\'user\'>Username</th> <th id=\'messageTime\'>Time</th> <th id=\'message\'>Message</th></tr>';
+            let messageEntry = output['messageHistory'];
+            for (i in messageEntry) {
+                let date = new Date(messageEntry[i].time);
+                messageHistory +=
+                    '<tr>' +
+                    '<th>' + messageEntry[i].user + '</th>' +
+                    '<th>' + date.toLocaleString() + '</th>' +
+                    '<th id="messageInner">' + messageEntry[i].message + '</th>' +
+                    '<tr/>';
+            }
+            $('#messageTable').html(messageHistory);
         }
     });
 }

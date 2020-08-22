@@ -127,9 +127,8 @@ function logout() {
 
 // send a message.
 function postToChat() {
-    let message = $('#messageInput').val();
-    $('#messageInput').val('');
-    console.log(message);
+    let message = $('#sendInput').val();
+    $('#sendInput').val('');
     $.ajax({
         url: '/post/chat/',
         data: { message: message },
