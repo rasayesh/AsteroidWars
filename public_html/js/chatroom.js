@@ -45,6 +45,9 @@ $(document).ready(() => {
 
     setInterval(updateChatRoom, 1000); // update chat every 1 second
 
+    $(document).keydown((e) => {
+        if (e.keyCode == '13') $('#sendButton').click(); // if user hits enter send message
+    });
 });
 
 

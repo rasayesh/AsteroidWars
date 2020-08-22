@@ -35,7 +35,7 @@
             <input class="userInput" id="loginUsername" placeholder="Username" type="text"><br/>
             <input class="userInput" id="loginPassword" type="password" placeholder="Password" required><br/>
             <div id="incorrectCredentialsError"></div>
-            <input class="button" type="button" value="Login" onclick="login();">
+            <input id="loginButtonInner" class="button" type="button" value="Login" onclick="login();">
             <input class="button back" type="button" value="Back" onclick="back();">
         </div>
     </div>
@@ -48,7 +48,7 @@
             <input class="userInput" id="password" type="password" placeholder="Password"><br/>
             <input class="userInput" id="confirmPassword" type="password" placeholder="Confirm Password"><br/>
             <div id="passwordDontMatchError"></div>
-            <input class="button" type="button" value="finish" onclick="validatePassword();">
+            <input id="signupButtonInner" class="button" type="button" value="finish" onclick="validatePassword();">
             <input class="button back" type="button" value="Back" onclick="back();">
         </div>
     </div>

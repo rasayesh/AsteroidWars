@@ -176,14 +176,15 @@
 }
 
 #sendInput {
+    padding: 5px;
     width: 90%;
     color: wheat;
 }
 
 #sendButton {
     cursor: pointer;
-    padding-right: 5%;
-    padding-left: 5%;
+    height: 100%;
+    padding: 11px;
 }
 
 #sendButton:hover {

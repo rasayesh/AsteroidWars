@@ -9,8 +9,19 @@
  * 
  */
 
+let showingLogin = false; // currently displaying login div
+let showingSignup = false; // currently displaying signup div
+
+$(document).ready(() => {
+    $(document).keydown((e) => {
+        if (e.keyCode == '13' && showingLogin) $('#loginButtonInner').click();
+        else if (e.keyCode == '13' && showingSignup) $('#signupButtonInner').click();
+    });
+});
+
 // show login div, hide directory & signup divs
 function showLogin() {
+    showingLogin = true;
     $('#directoryButton').css('display', 'none');
     $('#loginContainer').css('display', 'block');
     $('#signupContainer').css('display', 'none');
@@ -18,6 +29,7 @@ function showLogin() {
 
 // show signup div, hide directory & login divs
 function showSignup() {
+    showingSignup = true;
     $('#directoryButton').css('display', 'none');
     $('#loginContainer').css('display', 'none');
     $('#signupContainer').css('display', 'block');
@@ -25,6 +37,8 @@ function showSignup() {
 
 // show directory div, hide login & signup divs
 function back() {
+    showingLogin = false;
+    showingSignup = false;
     $('#directoryButton').css('display', 'block');
     $('#loginContainer').css('display', 'none');
     $('#signupContainer').css('display', 'none');
@@ -72,6 +86,7 @@ function createAccount() {
     let pw = $('#password').val();
     $('#username').val('');
     $('#password').val('');
+    $('#confirmPassword').val('');
     $.ajax({
         url: '/add/user/',
         data: { username: un, password: pw },

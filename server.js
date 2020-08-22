@@ -108,7 +108,7 @@ function authenticate(req, res, next) {
     if (Object.keys(req.cookies).length > 0) {
         let u = req.cookies.login.username;
         let key = req.cookies.login.key;
-        console.log("IN AUTHENTICATE: ", u, key);
+        console.log('IN AUTHENTICATE: ', u, key);
         if (Object.keys(sessionKeys[u]).length > 0 && sessionKeys[u][0] == key) {
             next();
         } else {
