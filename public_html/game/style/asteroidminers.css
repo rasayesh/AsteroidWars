@@ -60,7 +60,7 @@ canvas {
 
 #heading {
     /* game stats */
-    color: red;
+    color: cornflowerblue;
     position: fixed;
     height: 5%;
     width: 100%;
@@ -106,12 +106,12 @@ canvas {
 }
 
 #startWindow {
-    color: red;
+    color: cornflowerblue;
     text-align: center;
 }
 
 #gameOverWindow {
-    color: red;
+    color: cornflowerblue;
     text-align: center;
 }
 
@@ -133,7 +133,7 @@ canvas {
 
 #pauseWindow {
     z-index: 1;
-    color: red;
+    color: cornflowerblue;
     text-align: center;
 }
 
@@ -157,4 +157,13 @@ canvas {
 #displayDirections,
 #pauseWindow {
     display: none;
+}
+
+#credits {
+    position: fixed;
+    color: cornflowerblue;
+    bottom: 0px;
+    height: 20px;
+    left: 5px;
+    z-index: 1;
 }
