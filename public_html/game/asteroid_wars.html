@@ -31,12 +31,13 @@
 <body>
     <!-- start window -->
     <div class="infoWindow" id="startWindow">
+        <h1>Game Menu</h1>
         <input class="button" id='start' value="Play" type="button" onclick="startGame();">
         <input class="button" id='directions' value="Help" type="button" onclick="showDirections();">
         <input class="button" id='backToMenu' value="Back to Menu" type="button" onclick="backToMenu();">
     </div>
 
-    <!-- game stats -->
+    <!-- post game stats -->
     <div class="infoWindow" id="gameStats">
         <h1 class="stat" id="stat_heading">STATS SAVED!</h1>
         <div class="stat" id="user_stat"></div>
@@ -59,6 +60,7 @@
         <input class="button" id='backToMenu' value="Back to Menu" type="button" onclick="backToMenu();">
     </div>
 
+    <!-- pause window -->
     <div class="infoWindow" id="pauseWindow">
         <h1>Game Paused</h1>
         <input class="button" id='start' value="Try Again" type="button" onclick="tryAgain();">
@@ -68,6 +70,7 @@
 
     <!-- time /current player score / # lives left -->
     <div id="heading">
+        <span id="roundOuter">Round:<span id="roundInner"></span></span>
         <span id="timeElapsed"></span>
         <span id="scoreOuter">Score:<span id="scoreInner"></span></span>
         <span id="countLife"></span>

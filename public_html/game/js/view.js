@@ -130,6 +130,7 @@ function initializeGame() {
 
 /* draw an image onto the canvas */
 function populateCanvas() {
+    postRound(); // draw current round
     postTime(); // draw current game time
     postLives(); // draw remaining lives
     postScore(); // draw score
@@ -261,6 +262,12 @@ function rotateAndDrawImage(image, x, y, angle) {
     ctx.rotate(-1 * angle); // angle already in radians.
     ctx.drawImage(image, -1 * image.width / 2, -1 * image.height / 2, image.width, image.height);
     ctx.restore();
+}
+
+/* this function posts the current round to the screen */
+/* current game round (+1 every time all asteroids destroyed) */
+function postRound() {
+    $('#roundInner').html(model.round);
 }
 
 /* helper function to manage time display in game and track game time */

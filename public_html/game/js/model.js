@@ -8,7 +8,7 @@ class Model {
         this.gameOver = false;
 
         // current game round (+1 every time all asteroids destroyed)
-        this.round = 0;
+        this.round = 1;
 
         // asteroid stats
         this.totalAsteroids = 0;
