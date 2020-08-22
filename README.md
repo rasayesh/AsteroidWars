@@ -57,7 +57,7 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
       - lowest to highest (asteroids spawned)<br/>
 - [X] update game startmenu/endmenu/pausemenu aesthetics
 - [X] redesign messaging system
-- [ ] add chat history to profile
+- [X] add chat history to profile
 - [ ] update game directions
 - [ ] design home page
 - [ ] add favicon
