@@ -23,7 +23,6 @@
 }
 
 .container {
-    position: fixed;
     border: 2px cornflowerblue solid;
     background-color: black;
     box-sizing: border-box;
@@ -67,7 +66,7 @@
 
 #content {
     position: absolute;
-    height: 84%;
+    height: 86%;
     min-height: 700px;
     width: 100%;
     top: 150px;
