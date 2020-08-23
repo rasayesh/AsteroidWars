@@ -8,56 +8,7 @@
  * 
  */
 
-
-$(document).ready(() => {
-    // open menu when hovering over hamburger tab
-    $('#tabContainer').on({
-        mouseenter: () => {
-            $('#dropdownMenu').css('display', 'block');
-            $('.button').css('display', 'block')
-        }
-    });
-
-    // close menu when user takes mouse off menu
-    $('#dropdownMenu').on({
-        mouseleave: () => {
-            $('#dropdownMenu').css('display', 'none');
-            $('.button').css('display', 'none')
-        }
-    });
-
-    // close menu when user takes mouse off menu
-    $('#content').on({
-        mouseenter: () => {
-            $('#dropdownMenu').css('display', 'none');
-            $('.button').css('display', 'none')
-        }
-    });
-
-    // close menu when user takes mouse off menu
-    $('.container').on({
-        mouseenter: () => {
-            $('#dropdownMenu').css('display', 'none');
-            $('.button').css('display', 'none')
-        }
-    });
-
-});
-
-
-/* menu access */
-
-function home() {
-    $.ajax({
-        url: '/home/',
-        data: {},
-        method: 'GET',
-        success: function(output) {
-            console.log(output);
-            window.location = '../home.html';
-        }
-    });
-}
+/* home functions */
 
 function playGame() {
     $.ajax({
@@ -119,5 +70,3 @@ function logout() {
         }
     });
 }
-
-/* home functions */

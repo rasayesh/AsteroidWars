@@ -14,9 +14,6 @@
     /* format page */
     margin: 0px;
     padding: 0px;
-    /* font-family: 'Courier New', Courier, monospace; */
-    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -27,13 +24,11 @@
 
 .container {
     position: fixed;
-    border-top: 2px cornflowerblue solid;
-    border-left: 2px cornflowerblue solid;
-    border-bottom: 2px cornflowerblue solid;
+    border: 2px cornflowerblue solid;
     background-color: black;
     box-sizing: border-box;
     color: cornflowerblue;
-    width: 85%;
+    width: 100%;
     min-height: 150px;
     height: 16%;
     z-index: 1;
@@ -42,68 +37,23 @@
 
 .title {
     position: absolute;
-    bottom: 0px;
-    left: 5px;
+    margin-left: 5px;
+    margin-top: 65px;
     font-size: 50pt;
-}
-
-
-/* hamburger tab */
-
-#tabContainer {
-    background-color: black;
-    border-top: 2px cornflowerblue solid;
-    border-right: 2px cornflowerblue solid;
-    border-bottom: 2px cornflowerblue solid;
-    box-sizing: border-box;
-    position: fixed;
-    right: 0px;
-    width: 15%;
-    height: 16%;
-    min-width: 200px;
-    min-height: 150px;
     z-index: 1;
-}
-
-#barBox {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-.bar1,
-.bar2,
-.bar3 {
-    background-color: cornflowerblue;
-    width: 55px;
-    height: 5px;
-    margin: 10px 0;
-}
-
-
-/* dropdown menu */
-
-#dropdownMenu {
-    box-sizing: border-box;
-    position: fixed;
-    top: 150px;
-    right: 0px;
-    display: none;
-    z-index: 1;
+    color: cornflowerblue;
 }
 
 .button {
     background-color: black;
-    border: 1px cornflowerblue solid;
+    border: none;
+    font-size: larger;
     color: cornflowerblue;
-    font-size: 14pt;
     display: block;
-    padding: 40px;
-    width: 250px;
-    height: 100px;
     cursor: pointer;
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
     transition: 0.4s;
 }
 
@@ -116,19 +66,14 @@
 /* content section taking bottom 85% of page */
 
 #content {
-    position: fixed;
+    position: absolute;
     height: 84%;
+    min-height: 700px;
     width: 100%;
     top: 150px;
     background-color: black;
-}
-
-#page {
-    position: absolute;
-    width: 100%;
-    height: 20px;
-    text-align: center;
     color: cornflowerblue;
+    text-align: center;
 }
 
 #credits {
