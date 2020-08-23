@@ -44,6 +44,7 @@ $(document).ready(() => {
     });
 
     setInterval(updateChatRoom, 1000); // update chat every 1 second
+    setInterval(updateUsersOnline, 1000); // update users currently online every 5 seconds
 
     $(document).keydown((e) => {
         if (e.keyCode == '13') $('#sendButton').click(); // if user hits enter send message
@@ -151,6 +152,18 @@ function updateChatRoom() {
         method: 'GET',
         success: function(output) {
             $('#messages').html(output);
+        }
+    });
+}
+
+// update users currently online.
+function updateUsersOnline() {
+    $.ajax({
+        url: '/update/usersOnline/',
+        data: {},
+        method: 'GET',
+        success: function(output) {
+            $('#online').html(output);
         }
     });
 }

@@ -136,6 +136,7 @@
     height: 80%;
     top: 70px;
     left: 65%;
+    overflow: auto;
 }
 
 #chatBox {
@@ -190,6 +191,12 @@
 #sendButton:hover {
     background-color: cornflowerblue;
     color: black;
+}
+
+#online {
+    text-align: left;
+    padding: 10px;
+    color: lightgreen;
 }
 
 #credits {

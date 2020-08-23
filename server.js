@@ -250,7 +250,7 @@ app.post('/post/chat/', (req, res) => {
     });
 });
 
-// sort data base by time & update client side.
+// sort data base chat messages by time & update client side.
 app.get('/update/chatroom/', (req, res) => {
     ChatMessage.find({}).sort({ time: 1 }).exec(function(error, results) {
         let output = '';
@@ -259,6 +259,15 @@ app.get('/update/chatroom/', (req, res) => {
         }
         res.send(output);
     });
+});
+
+// send current active users online to front end
+app.get('/update/usersOnline/', (req, res) => {
+    let output = ''
+    for (user in Object.keys(sessionKeys)) {
+        output += '<p> ● ' + Object.keys(sessionKeys)[user] + '</p>';
+    }
+    res.send(output);
 });
 
 /* SERVER - ALLSCORES */
