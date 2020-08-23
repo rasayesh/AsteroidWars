@@ -40,7 +40,7 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
 - [X] change "high scores" to "all scores"
 - [X] re-design website
 - [X] implement website skeleton
-- [X] add ability to change ordering in both highscores menu and profile menu<br/>
+- [X] add ability to change ordering in both all_scores menu and profile menu<br/>
       - order by usernames
       - order by date
       - highest to lowest (score)<br/>
