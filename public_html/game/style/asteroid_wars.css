@@ -1,0 +1,211 @@
+/**
+ * @author Reza Munoz-Asayesh
+ * @file asteroid_wars.css 
+ * @project Asteroid Wars
+ * Description: This is the css file for styling of asteroid_wars.html. This file is for 
+ * creating the styling that will give the html divs positioning, color, dimension etc.
+ * 
+ */
+
+
+/* format page */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    /* font-family: 'Courier New', Courier, monospace; */
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+canvas {
+    background-color: black;
+    background-image: url("../graphics/backgrounds/test2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    position: fixed;
+}
+
+.infoWindow {
+    position: absolute;
+    background-color: black;
+    border: solid cornflowerblue 4px;
+    top: 25%;
+    left: 33%;
+    z-index: 1;
+}
+
+.button {
+    background-color: black;
+    color: cornflowerblue;
+    display: block;
+    height: 100px;
+    width: 300px;
+    border: none;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.button:hover {
+    background-color: cornflowerblue;
+    color: black;
+}
+
+.stat {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#heading {
+    /* game stats */
+    color: cornflowerblue;
+    position: fixed;
+    height: 5%;
+    width: 100%;
+    font-size: 18pt;
+    z-index: 1;
+}
+
+#roundOuter {
+    /* game stats */
+    margin-left: 10%;
+}
+
+#timeElapsed {
+    /* game stats */
+    margin-left: 10%;
+}
+
+#countLife {
+    /* game stats */
+    margin-left: 10%;
+}
+
+#scoreOuter {
+    /* game stats */
+    margin-left: 10%;
+}
+
+#next {
+    display: block;
+    background-color: black;
+    color: cornflowerblue;
+    display: block;
+    border: none;
+    cursor: pointer;
+    font-size: larger;
+    width: 300px;
+    height: 60px;
+}
+
+#next:hover {
+    background-color: cornflowerblue;
+    color: black;
+}
+
+#startWindow {
+    color: cornflowerblue;
+    text-align: center;
+}
+
+#gameOverWindow {
+    color: cornflowerblue;
+    text-align: center;
+}
+
+#directionsPic {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    max-height: 800px;
+    margin: auto;
+}
+
+#gameStats {
+    color: cornflowerblue;
+    padding: 5px;
+    width: 300px;
+    height: 300px;
+}
+
+#pauseWindow {
+    z-index: 1;
+    color: cornflowerblue;
+    text-align: center;
+}
+
+#displayDirections {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+    color: cornflowerblue;
+    overflow: auto;
+}
+
+#directionsHeading {
+    color: cornflowerblue;
+    text-align: center;
+}
+
+.directionsSubHeading {
+    color: cornflowerblue;
+    margin: 20px;
+    margin-left: 30px;
+}
+
+.directionsInput {
+    margin-left: 40px;
+    width: 90%;
+}
+
+#doneDirections {
+    border: 1px cornflowerblue solid;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: black;
+    color: cornflowerblue;
+    cursor: pointer;
+    font-size: larger;
+    padding: 20px
+}
+
+#doneDirections:hover {
+    background: cornflowerblue;
+    color: black;
+}
+
+#player,
+#enemy,
+#enemyDamaged,
+#explosion1,
+#explosion2,
+#explosion3,
+#explosion4,
+#explosion5,
+#playerThrust,
+#asteroidSmall,
+#asteroidMedium,
+#asteroidLarge,
+#lazer_gun,
+#playerBullet,
+#enemyBullet,
+#gameOverWindow,
+#gameStats,
+#displayDirections,
+#pauseWindow {
+    display: none;
+}
+
+#credits {
+    position: fixed;
+    color: cornflowerblue;
+    bottom: 0px;
+    height: 20px;
+    left: 5px;
+    z-index: 1;
+}

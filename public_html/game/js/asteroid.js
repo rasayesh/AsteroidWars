@@ -1,8 +1,9 @@
 /**
  * @author Reza Munoz-Asayesh
  * @file asteroid.js 
- * @project Asteroid Miners
- * @description This program, is the class for the Asteroid.
+ * @project Asteroid Wars
+ * @description This file contains the class that represents the small, medium and large 
+ * asteroids, their attributes and accompanying methods.
  * 
  */
 

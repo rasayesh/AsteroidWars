@@ -1,3 +1,13 @@
+/**
+ * @author Reza Munoz-Asayesh
+ * @file model.js 
+ * @project Asteroid Wars
+ * @description This file, contains the Model class that stores the state of the game, it is 
+ * directly manipulated by the controller and is observed by the view which updates to reflect
+ * the game state.
+ * 
+ */
+
 class Model {
     constructor() {
         // game background music

@@ -1,10 +1,10 @@
 /**
  * @author Reza Munoz-Asayesh
  * @file controller.js 
- * @project Asteroid Miners
- * @description This program, is the controller for the asteroid game.
+ * @project Asteroid Wars
+ * @description This program, is the controller for the Asteroid Wars game.
  * It monitors and facilitates all communication between the view and the model,
- *  updating the model whenever the user interacts with the game or a game 
+ * updating the model whenever the user interacts with the game or a game 
  * event occures it always goes through this.
  * 
  */

@@ -1,7 +1,7 @@
 /**
  * @author Reza Munoz-Asayesh
  * @file server.js 
- * @project AsteroidWars
+ * @project Asteroid Wars
  * @description This program, is the server to the asteroid game website,
  * It includes features like cookies, hashing & salting, database parsing
  * ,data base modification, and database uploading etc.
@@ -189,7 +189,7 @@ app.get('/home/', (req, res) => {
 });
 
 // tells front end to go to game page.
-app.get('/game/', (req, res) => { // may need to add a different addition to make cookie time extra long when this is called----------------------------
+app.get('/game/', (req, res) => {
     resetSessionTime(req, res); // user is active so reset their time to current.
     res.send('play_game');
 });

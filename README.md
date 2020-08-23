@@ -59,6 +59,6 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
 - [X] redesign messaging system
 - [X] add chat history to profile
 - [X] update game directions
-- [X] design home page
+- [X] Add Trailer to index.html
 - [ ] add favicon
 - [ ] add domain name to website.

@@ -1,8 +1,8 @@
 /**
  * @author Reza Munoz-Asayesh
  * @file bullet.js 
- * @project Asteroid Miners
- * @description This program, is the class for the Bullet.
+ * @project Asteroid Wars
+ * @description This file, contains the class for the Bullet.
  * 
  */
 

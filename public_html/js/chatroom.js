@@ -4,7 +4,8 @@
  * @project Asteroid Wars
  * @description This js file provides functionality for the chatrom to communicate with the 
  * server using Ajax to post messages to the server as well as retrieve and update the chat
- * every cycle of interval time.
+ * every cycle of interval time. This code also gets all current users logged in and displays 
+ * them in the respective menu.
  * 
  */
 

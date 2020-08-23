@@ -1,3 +1,12 @@
+/**
+ * @author Reza Munoz-Asayesh
+ * @file player.js 
+ * @project Asteroid Wars
+ * @description This file, contains the player class, and all of its 
+ * attributes and attribute manipulating methods.
+ * 
+ */
+
 class Player {
     constructor() {
         // player spawn sound

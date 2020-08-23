@@ -39,7 +39,7 @@
 
 .title {
     position: absolute;
-    bottom: 0px;
+    bottom: 5px;
     left: 5px;
     font-size: 50pt;
 }
@@ -146,11 +146,14 @@
     background-color: black;
 }
 
+#trailer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 #credits {
-    position: fixed;
-    color: cornflowerblue;
+    position: absolute;
     bottom: 0px;
-    height: 20px;
-    left: 5px;
-    z-index: 1;
+    left: 110px;
 }

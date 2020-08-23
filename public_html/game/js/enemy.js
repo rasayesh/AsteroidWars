@@ -1,3 +1,13 @@
+/**
+ * @author Reza Munoz-Asayesh
+ * @file enemy.js 
+ * @project Asteroid Wars
+ * @description This file, contains the Enemy class for holding the enemies 
+ * attributes that will be manipulated by the controller, when a enemy is created
+ * and stored in the model.
+ * 
+ */
+
 class Enemy {
     constructor() {
         // pause flag, to pause shooting when game is paused

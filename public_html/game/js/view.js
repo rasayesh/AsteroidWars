@@ -1,3 +1,14 @@
+/**
+ * @author Reza Munoz-Asayesh
+ * @file view.js 
+ * @project Asteroid Wars
+ * @description This program, is the view for the Asteroid Wars game.
+ * It monitors the model, and will update the game graphics side to match
+ * that of the game state that is saved in the model. The view then speaks
+ * to the controller to let it know it has updated in an MVC loop.
+ * 
+ */
+
 // MVC Setup
 let user; // current user
 let model; // game state storage.
