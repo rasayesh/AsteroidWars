@@ -18,7 +18,7 @@
 
 ## Dependencies
 
-Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto.js
+Node.js, Express.js, JQuery.js, Parser.js, Cookie-parser.js, Mongoose.js, crypto.js, Howler.js
 
 ## Future TODOS
 
