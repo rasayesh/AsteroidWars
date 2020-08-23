@@ -58,7 +58,7 @@ Node.js, Express.js, JQuery.js, parser.js, cookie-parser.js, mongoose.js, crypto
 - [X] update game startmenu/endmenu/pausemenu aesthetics
 - [X] redesign messaging system
 - [X] add chat history to profile
-- [ ] update game directions
+- [X] update game directions
 - [ ] design home page
 - [ ] add favicon
 - [ ] add domain name to website.

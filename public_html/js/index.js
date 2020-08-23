@@ -48,7 +48,7 @@ function back() {
 function validatePassword() {
     let password = $('#password').val();
     let confirmPassword = $('#confirmPassword').val();
-    if (password == confirmPassword) {
+    if (password === confirmPassword && password !== '') {
         createAccount();
     } else {
         $('#passwordDontMatchError')
@@ -63,20 +63,23 @@ function login() {
     let password = $('#loginPassword').val(); // password_input
     $('#loginUsername').val('');
     $('#loginPassword').val('');
-    $.ajax({
-        url: '/login/' + username + '/' + password,
-        data: {},
-        method: 'GET',
-        success: function(output) {
-            if (output == 'incorrect_login') // add error output to warn user of failed login.
-                $('#incorrectCredentialsError')
-                .html('Issue logging in with that info')
-                .css('color', 'red');
-            else {
-                window.location = '../home.html';
+    if (password === '') $('#incorrectCredentialsError').html('Issue logging in with that info').css('color', 'red');
+    else {
+        $.ajax({
+            url: '/login/' + username + '/' + password,
+            data: {},
+            method: 'GET',
+            success: function(output) {
+                if (output == 'incorrect_login') // add error output to warn user of failed login.
+                    $('#incorrectCredentialsError')
+                    .html('Issue logging in with that info')
+                    .css('color', 'red');
+                else {
+                    window.location = '../home.html';
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 // This function adds a user to the database by taking inputs of username and password 

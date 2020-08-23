@@ -78,8 +78,38 @@
 
     <!-- directions picture -->
     <div id="displayDirections">
-        <img id="directionsPic" src="./graphics/directions/directions.png" alt="directions">
-        <input class="button" id='doneDirections' value="Done" type="button" onclick="exitDirections()">
+        <h1 id="directionsHeading">Directions for Asteroid Wars</h1>
+        <div id="directionsBody">
+            <h2 class="directionsSubHeading">CONTROLS</h2>
+            <div class="directionsInput">
+                <p>W - Thrust</p><br/>
+                <p>A - Turn Left</p><br/>
+                <p>D - Turn Right</p><br/>
+                <p>SpaceBar - shoot (hold for rapid fire)</p><br/>
+                <p>P - Pause Menu</p><br/>
+            </div>
+            <h2 class="directionsSubHeading">GOAL</h2>
+            <div class="directionsInput">
+                <p>-Survive as long as possible while destroying as many asteroids and enemy ships as possible</p><br/>
+            </div>
+            <h2 class="directionsSubHeading">HINTS/TIPS</h2>
+            <div class="directionsInput">
+                <p>-WATCH OUT! Every 1 minute, an enemy ship will spawn, they are very hard to kill (100 shots to kill) and they shoot in almost all directions. Try to position your spaceship inbetween bullet paths as there are a few wide enough to keep
+                    you safe! </p><br/>
+                <p>-Enemy bullets can destroy asteroids as well so use this to your advantage however, when the enemy destroys the asteroids you don't get any points so choose wisely!</p><br/>
+                <p>-When controlling your space ship, be wise to remember that the physics are like that of in actual space there is no force to stop you once you have accelerated in order to stop or slow down you must thrust in the opposite direction you
+                    are currently flying. </p><br/>
+            </div>
+            <h2 class="directionsSubHeading">KEY</h2>
+            <div class="directionsInput">
+                <p><u>Rounds</u> - The game progresses one round each time all of the asteroids are destroyed.</p><br/>
+                <p><u>Time</u> - Game time elapsed</p><br/>
+                <p><u>Score</u> - achieved by destroying asteroids, 100 - large, 50 - medium, 10 - small and for destroying enemy ships 500 per enemy ship.</p><br/>
+                <p><u>Player Lives</u> - At the top right of the screen the player can see their remaining lives inclusive</p><br/>
+            </div>
+        </div>
+        <!-- <img id="directionsPic" src="./graphics/directions/directions.png" alt="directions"> -->
+        <input id='doneDirections' value="X" type="button" onclick="exitDirections()">
     </div>
 
     <!-- graphics used in game -->
