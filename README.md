@@ -63,9 +63,10 @@ and more...
 
 To communicate with the database directly the API/Server I made uses mongoose.js which stores the user profile information, game information, and user messages information.
 
-The sorting requests cover both, each url is to the respective function:
-H2L (highest to lowest) 
-L2H (lowest to highest)
+The sorting requests cover both:
+H2L (highest to lowest) request
+L2H (lowest to highest) request
+condensed into one line for less repetition.
 
 ### API Routes:
 | Function        | Route     |
