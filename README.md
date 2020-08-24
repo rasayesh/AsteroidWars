@@ -11,7 +11,7 @@ spawns as a spaceship and must survive through an increasing number of asteroids
 spawns every minute. Players will gain score per asteroid and enemy ship they kill, these items are all worth different amounts
 of points:
 
-enemy superShip - 500 (takes 100 shots to kill)
+enemy superShip - 500 * round number 
 large asteroid - 100
 medium asteroid - 50
 small asteroid - 10
