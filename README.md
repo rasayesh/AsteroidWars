@@ -23,19 +23,19 @@ small asteroid - 10
 <p float="left">
 <p>The Index page is the first see when they go to the website URL, users have an option to log in or sign up if they do not already have an account.</p>
 
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/index.PNG" width="400" height="500">
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/index.PNG" >
 <p>The Home page is the first page users see when they log into the website, which acts as a directory to the rest of the sites pages.</p>
 
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/home.PNG" width="400" height="500">
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/home.PNG" >
 <p>The AllScores page is where users can go to see all the other users scores, in a large interactive game stats chart that is sortable by category.</p>
 
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/allScores.PNG" width="400" height="500">
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/allScores.PNG" >
 <p>The ChatRoom is where users currently online can go and talk to each other in a global chat, there is also a section to the right of the chat where users can see all the users currently on the website.</p>
 
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/chatRoom.PNG" width="400" height="500">
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/chatRoom.PNG" >
 <p>The Profile page is where users can go to see their own personal stats, with the same interactive chart capabilities to sort by the categories. Users can also see all of their chat history of messages they typed into the chat room.</p>
 
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/profile.PNG" width="400" height="500">
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/profile.PNG" >
 </p>
 
 ### Images of Asteroid Wars Game
@@ -43,7 +43,7 @@ small asteroid - 10
 <p float="left">
 <p>Asteroid Wars game is accessed by click the "play game" option in the menu/dropdown menu
 on the website, available on the game page is the ability to play the game, and get help and tips on how to play the game.</p>
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/game.PNG" width="400" height="500">
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/game.PNG" >
 </p>
 
 ## Code & Libraries Used
