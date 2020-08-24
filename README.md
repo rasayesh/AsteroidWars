@@ -1,25 +1,20 @@
 # AsteroidWars
 
 ## Developer/s
-
 [Reza Asayesh](https://github.com/rasayesh)<br/>
 
 ## Game Descritpion
-
-Asteroid Wars is a game where users must survive as long as possible while scoring the most points as well. The player
+<p>Asteroid Wars is a game where users must survive as long as possible while scoring the most points as well. The player
 spawns as a spaceship and must survive through an increasing number of asteroids on the map as well as an enemy super ship that
 spawns every minute. Players will gain score per asteroid and enemy ship they kill, these items are all worth different amounts
-of points:
-
-enemy superShip - 500 * round number 
-large asteroid - 100
-medium asteroid - 50
-small asteroid - 10
+of points:</p>
+<p>enemy superShip - 500 * round number</p>
+<p>large asteroid - 100</p>
+<p>medium asteroid - 50</p>
+<p>small asteroid - 10</p>
 
 ## Images/Walk through
-
 ### Images of Website
-
 <p float="left">
 <p>The Index page is the first see when they go to the website URL, users have an option to log in or sign up if they do not already have an account. There is also a nice trailer of the game playing on loop in the content part of the screen below the signin/signup area.</p>
 <img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/index.PNG" >
@@ -34,7 +29,6 @@ small asteroid - 10
 </p>
 
 ### Images of Asteroid Wars Game
-
 <p float="left">
 <p>Asteroid Wars game is accessed by click the "play game" option in the menu/dropdown menu
 on the website, available on the game page is the ability to play the game, and get help and tips on how to play the game.</p>
@@ -42,7 +36,6 @@ on the website, available on the game page is the ability to play the game, and 
 </p>
 
 ## Code & Libraries Used
-
 This project is a website designed around a game called Asteroid Wars, where users signup and make an account to play the game.
 By signing up users can track their game history, and compare their scores to other players, and even chat with users that are online.
 This project incorporates O.O.P to create the Asteroid Wars game, Node.js for the server, which also uses MongoDB (mongoose.js) database 
@@ -60,7 +53,6 @@ many java script library dependencies including:
 
 
 ## Website/Game API
-
 The website that includes the game, communicates with the server which has access to the Mongo database to either update the database or fetch data requested by the front end for the user to see. Examples of information requested, and updated/added include:
 - user profiles
 - user game history
@@ -76,7 +68,6 @@ H2L (highest to lowest)
 L2H (lowest to highest)
 
 ### API Routes:
-
 | Function        | Route     |
 | --------        | --------    |
 | `POST` Add User | /add/user |
@@ -98,5 +89,4 @@ L2H (lowest to highest)
 \+ more
 
 ## Dependencies
-
 Node.js, Express.js, JQuery.js, Parser.js, Cookie-parser.js, Mongoose.js, crypto.js, Howler.js
