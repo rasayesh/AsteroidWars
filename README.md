@@ -13,26 +13,26 @@ of points:</p>
 <p>medium asteroid - 50</p>
 <p>small asteroid - 10</p>
 
-## Images/Walk through
+## images/walkthrough/Walk through
 ### Images of Website
 <p float="left">
 <p>The Index page is the first see when they go to the website URL, users have an option to log in or sign up if they do not already have an account. There is also a nice trailer of the game playing on loop in the content part of the screen below the signin/signup area.</p>
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/index.PNG" >
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/walkthrough/index.PNG" >
 <p>The Home page is the first page users see when they log into the website, which acts as a directory to the rest of the sites pages. To navigate to any of the other page selections you can hover over the hamburger tab located in the top right which will bring all the menu options in a drop down menu </p>
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/home.PNG" >
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/walkthrough/home.PNG" >
 <p>The AllScores page is where users can go to see all the other users scores, in a large interactive game stats chart that is sortable by category. To navigate to any of the other page selections you can hover over the hamburger tab located in the top right which will bring all the menu options in a drop down menu </p>
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/allScores.PNG" >
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/walkthrough/allScores.PNG" >
 <p>The ChatRoom is where users currently online can go and talk to each other in a global chat, there is also a section to the right of the chat where users can see all the users currently on the website. To navigate to any of the other page selections you can hover over the hamburger tab located in the top right which will bring all the menu options in a drop down menu </p>
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/chatRoom.PNG" >
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/walkthrough/chatRoom.PNG" >
 <p>The Profile page is where users can go to see their own personal stats, with the same interactive chart capabilities to sort by the categories. Users can also see all of their chat history of messages they typed into the chat room. To navigate to any of the other page selections you can hover over the hamburger tab located in the top right which will bring all the menu options in a drop down menu </p>
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/profile.PNG" >
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/walkthrough/profile.PNG" >
 </p>
 
 ### Images of Asteroid Wars Game
 <p float="left">
 <p>Asteroid Wars game is accessed by click the "play game" option in the menu/dropdown menu
 on the website, available on the game page is the ability to play the game, and get help and tips on how to play the game.</p>
-<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/game.PNG" >
+<img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/walkthrough/game.PNG" >
 </p>
 
 ## Code & Libraries Used
