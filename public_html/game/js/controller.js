@@ -289,7 +289,7 @@ class Controller {
 
     // check if all the asteroids are gone, then respawn more asteroids by 1.5x previous amount
     asteroidsAllGoneEvent() {
-        if (model.asteroidCount === 0) {
+        if (model.asteroidCount === 0 && model.enemyArray.length === 0) {
             model.staticAsteroidCount *= 1.5;
             model.asteroidCount = Math.floor(model.staticAsteroidCount);
             model.initializeAsteroids();

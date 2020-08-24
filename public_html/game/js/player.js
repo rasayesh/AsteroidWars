@@ -50,21 +50,25 @@ class Player {
     }
 
     thrust() {
-        let arc = .01;
+        let arc = .03;
+        console.log('vertical: ', this.verticalVelocity);
+        console.log('horizontal: ', this.horizontalVelocity);
         this.verticalVelocity += -1 * arc * Math.sin(this.angle);
         this.horizontalVelocity += arc * Math.cos(this.angle);
-        if (!this.thrustOn) {
-            this.thrustSound.play();
-        }
+        if (this.verticalVelocity > 4) this.verticalVelocity = 4; // max 4
+        if (this.verticalVelocity < -4) this.verticalVelocity = -4; // max -4
+        if (this.horizontalVelocity > 4) this.horizontalVelocity = 4; // max 4
+        if (this.horizontalVelocity < -4) this.horizontalVelocity = -4; // max -4
+        if (!this.thrustOn) this.thrustSound.play();
     }
 
     turnLeft() {
-        this.angle += .05;
+        this.angle += .04;
         //if (this.angle > (Math.PI / 180) * 2) this.angle = this.angle - (Math.PI / 180 * 2);
     }
 
     turnRight() {
-        this.angle -= .05;
+        this.angle -= .04;
         //if (this.angle < 0) this.angle = this.angle + (Math.PI / 180 * 2);
     }
 
