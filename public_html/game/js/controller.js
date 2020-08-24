@@ -177,9 +177,9 @@ class Controller {
                         let y = model.asteroidArray[asteroid].y;
                         let width = parseInt($('#asteroidMedium')[0].width);
                         let height = parseInt($('#asteroidMedium')[0].height);
-                        let vertVelocity = Math.random() * (.9 - .21) + .21;
+                        let vertVelocity = Math.random() * (1.7 - .6) + .6;
                         vertVelocity *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
-                        let horzVelocity = Math.random() * (.9 - .21) + .21;
+                        let horzVelocity = Math.random() * (1.7 - .6) + .6;
                         horzVelocity *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
                         let angle = (Math.random() * (Math.PI / 180) * 2);
                         let size = 'medium';
@@ -201,9 +201,9 @@ class Controller {
                         let y = model.asteroidArray[asteroid].y;
                         let width = parseInt($('#asteroidSmall')[0].width);
                         let height = parseInt($('#asteroidSmall')[0].height);
-                        let vertVelocity = Math.random() * (.9 - .21) + .21;
+                        let vertVelocity = Math.random() * (1.7 - .6) + .6;
                         vertVelocity *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
-                        let horzVelocity = Math.random() * (.9 - .21) + .21;
+                        let horzVelocity = Math.random() * (1.7 - .6) + .6;
                         horzVelocity *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
                         let angle = (Math.random() * (Math.PI / 180) * 2);
                         let size = 'small';
@@ -258,10 +258,10 @@ class Controller {
         }
         // check if a enemy bullet has hit player ship and destroyed it
         let player = model.player;
-        let playerXRadiusRight = player.x + (player.width / 2.75);
-        let playerXRadiusLeft = player.x - (player.width / 2.75);
-        let playerYRadiusDown = player.y + (player.height / 2.75);
-        let playerYRadiusUp = player.y - (player.height / 2.75);
+        let playerXRadiusRight = player.x + (player.width / 2);
+        let playerXRadiusLeft = player.x - (player.width / 2);
+        let playerYRadiusDown = player.y + (player.height / 2);
+        let playerYRadiusUp = player.y - (player.height / 2);
         for (let k = 0; k < model.enemyArray.length; k++) {
             let enemy = model.enemyArray[k];
             for (let j = 0; j < enemy.ammunition.length; j++) {
@@ -285,29 +285,32 @@ class Controller {
                 }
             }
         }
-    }
-
-    // check if all the asteroids are gone, then respawn more asteroids by 1.5x previous amount
-    asteroidsAllGoneEvent() {
-        if (model.asteroidCount === 0 && model.enemyArray.length === 0) {
-            model.staticAsteroidCount *= 1.5;
-            model.asteroidCount = Math.floor(model.staticAsteroidCount);
-            model.initializeAsteroids();
-            model.player.resetToSpawnLocation();
-            model.round++;
+        // check if player has crashed into enemy ship
+        for (let i = 0; i < model.enemyArray.length; i++) {
+            let playerX = model.player.x;
+            let playerY = model.player.y;
+            let enemyShip = model.enemyArray[i];
+            let enemyShipXRadiusRight = enemyShip.x + (enemyShip.width / 2.5);
+            let enemyShipXRadiusLeft = enemyShip.x - (enemyShip.width / 2.5);
+            let enemyShipYRadiusDown = enemyShip.y + (enemyShip.height / 2.5);
+            let enemyShipXRadiusUp = enemyShip.y - (enemyShip.height / 2.5);
+            if ((playerX <= enemyShipXRadiusRight && playerX >= enemyShipXRadiusLeft) &&
+                playerY <= enemyShipYRadiusDown && playerY >= enemyShipXRadiusUp && model.player.isAlive) {
+                // add new explosion
+                let newExplosion = new Explosion(player.x, player.y);
+                newExplosion.isPlayer = true;
+                model.explosionArray.push(newExplosion);
+                // set player to dead
+                model.player.playerDied();
+                model.numPlayerLives--; // player loses 1 life
+                if (model.numPlayerLives === 0) {
+                    for (let a = 0; a < model.enemyArray.length; a++) model.enemyArray[a].enemyDied(); // remove enemy ships from map on player death
+                    console.log('game over event');
+                    model.gameOver = true;
+                }
+            }
         }
-    }
 
-    // check if a minute has passed, then spawn enemy
-    updateEnemyEvent(minutes) {
-        if (minutes === model.enemySpawnTicker) {
-            console.log('spawn enemy ship!');
-            model.enemySpawnTicker++;
-            // add enemy ship to enemyShipArray
-            let newEnemy = new Enemy();
-            model.enemyArray.push(newEnemy);
-            model.enemiesSpawned++;
-        }
     }
 
     // check if a bullet or asteroid has hit enemy space ship and  destroyed it
@@ -346,16 +349,16 @@ class Controller {
         // check if asteroid killed enemy
         for (let i = 0; i < model.asteroidCount; i++) {
             let asteroid = model.asteroidArray[i];
-            let asteroidXRadiusRight = asteroid.x + (asteroid.width / 2.75);
-            let asteroidXRadiusLeft = asteroid.x - (asteroid.width / 2.75);
-            let asteroidYRadiusDown = asteroid.y + (asteroid.height / 2.75);
-            let asteroidYRadiusUp = asteroid.y - (asteroid.height / 2.75);
+            let asteroidX = asteroid.x;
+            let asteroidY = asteroid.y;
             for (let j = 0; j < model.enemyArray.length; j++) {
                 let enemyShip = model.enemyArray[j];
-                let enemyX = enemyShip.x + enemyShip.width / 2.5;
-                let enemyY = enemyShip.y + enemyShip.height / 2.5;
-                if ((enemyX <= asteroidXRadiusRight && enemyX >= asteroidXRadiusLeft) &&
-                    enemyY <= asteroidYRadiusDown && enemyY >= asteroidYRadiusUp && enemyShip.isAlive) {
+                let enemyShipXRadiusRight = enemyShip.x + (enemyShip.width / 2.5);
+                let enemyShipXRadiusLeft = enemyShip.x - (enemyShip.width / 2.5);
+                let enemyShipYRadiusDown = enemyShip.y + (enemyShip.height / 2.5);
+                let enemyShipXRadiusUp = enemyShip.y - (enemyShip.height / 2.5);
+                if ((asteroidX <= enemyShipXRadiusRight && asteroidX >= enemyShipXRadiusLeft) &&
+                    asteroidY <= enemyShipYRadiusDown && asteroidY >= enemyShipXRadiusUp && enemyShip.isAlive) {
                     if (enemyShip.health === 0) {
                         let newExplosion = new Explosion(enemyShip.x, enemyShip.y);
                         newExplosion.isEnemy = true;
@@ -376,7 +379,7 @@ class Controller {
                 if (model.enemyArray[j].destroyedByAsteroid) model.enemyArray.splice(j, 1); // remove enemy from enemy array
                 else if (model.enemyArray[j].destroyedByPlayer) {
                     model.enemyArray.splice(j, 1); // remove enemy from enemy array
-                    model.playerScore += 500; // add 500 to player score
+                    model.playerScore += (500 * model.round); // add 500 * round multiplier to player score
                     model.enemiesDestroyed++;
                 } else {
                     console.log('enemy killed by neither asteroid or player, must be game reset');
@@ -384,4 +387,30 @@ class Controller {
             }
         }
     }
+
+    // check if all the asteroids are gone, then respawn more asteroids by 1.5x previous amount
+    asteroidsAllGoneEvent() {
+        if (model.asteroidCount === 0 && model.enemyArray.length === 0) {
+            model.staticAsteroidCount *= 1.5;
+            model.asteroidCount = Math.floor(model.staticAsteroidCount);
+            model.initializeAsteroids();
+            model.player.resetToSpawnLocation();
+            model.round++;
+        }
+    }
+
+    // check if a minute has passed, then spawn enemy
+    updateEnemyEvent(minutes) {
+        if (minutes === model.enemySpawnTicker) {
+            console.log('spawn enemy ship!');
+            model.enemySpawnTicker++;
+            // add enemy ship to enemyShipArray
+            let newEnemy = new Enemy();
+            newEnemy.health = model.round *= newEnemy.health; // enemy health increases as rounds increase
+            console.log('Enemy Health', newEnemy.health);
+            model.enemyArray.push(newEnemy);
+            model.enemiesSpawned++;
+        }
+    }
+
 }

@@ -35,13 +35,13 @@ class Model {
         this.enemyOnMap = false; // flag to play enemy engine sound
 
         // player
-        this.numPlayerLives = 3;
+        this.numPlayerLives = 4;
         this.playerScore = 0;
         this.player = new Player();
 
         // asteroids
-        this.staticAsteroidCount = 2; // beginning asteroid count
-        this.asteroidCount = 2; // current asteroids on map
+        this.staticAsteroidCount = 3; // beginning asteroid count
+        this.asteroidCount = 3; // current asteroids on map
         this.asteroidArray = []; // array of asteroid objects 
         this.initializeAsteroids();
 
@@ -52,10 +52,10 @@ class Model {
     initializeAsteroids() {
         for (let i = 0; i < this.asteroidCount; i++) {
             let newAsteroid = new Asteroid();
-            let randVelocity = Math.random() * (.9 - .21) + .21;
+            let randVelocity = Math.random() * (1.2 - .6) + .6;
             randVelocity *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
             newAsteroid.verticalVelocity = randVelocity;
-            randVelocity = Math.random() * (.9 - .21) + .21;
+            randVelocity = Math.random() * (1.2 - .6) + .6;
             randVelocity *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
             newAsteroid.horizontalVelocity = randVelocity;
             newAsteroid.angle = (Math.random() * (Math.PI / 180) * 2);
@@ -64,7 +64,7 @@ class Model {
             while (true) {
                 let x = (Math.random() * window.innerWidth);
                 let y = (Math.random() * window.innerHeight);
-                if ((x < playerX - 125 || x > playerX + 125) && (y < playerY - 125 || y > playerY + 125)) { //------- bounds check.
+                if ((x < playerX - 200 || x > playerX + 200) && (y < playerY - 200 || y > playerY + 200)) { //------- bounds check.
                     newAsteroid.x = x;
                     newAsteroid.y = y;
                     break;

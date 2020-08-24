@@ -51,8 +51,8 @@ class Player {
 
     thrust() {
         let arc = .03;
-        console.log('vertical: ', this.verticalVelocity);
-        console.log('horizontal: ', this.horizontalVelocity);
+        // console.log('vertical: ', this.verticalVelocity);
+        // console.log('horizontal: ', this.horizontalVelocity);
         this.verticalVelocity += -1 * arc * Math.sin(this.angle);
         this.horizontalVelocity += arc * Math.cos(this.angle);
         if (this.verticalVelocity > 4) this.verticalVelocity = 4; // max 4

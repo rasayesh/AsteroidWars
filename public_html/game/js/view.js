@@ -9,6 +9,8 @@
  * 
  */
 
+
+
 // MVC Setup
 let user; // current user
 let model; // game state storage.
@@ -91,6 +93,7 @@ function cycleGame() {
 
 /* set all game booleans to initial status and create new model/controller connection */
 function initializeGame() {
+    Howler.volume(0.3); // change global volume to 30%
     engineBurstSoundBoolOn = false;
     turnLeft = false;
     turnRight = false;
