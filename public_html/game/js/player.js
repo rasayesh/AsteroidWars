@@ -76,8 +76,6 @@ class Player {
         this.spaceShipExplodeSound.play();
         this.isAlive = false;
         this.isSafeToSpawn = false;
-        this.verticalVelocity = 0;
-        this.horizontalVelocity = 0;
         this.angle = 0; //radians
         this.resetToSpawnLocation();
     }
@@ -85,5 +83,7 @@ class Player {
     resetToSpawnLocation() {
         this.x = window.innerWidth / 2;
         this.y = window.innerHeight / 2;
+        this.verticalVelocity = 0;
+        this.horizontalVelocity = 0;
     }
 }
