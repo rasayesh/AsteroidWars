@@ -72,7 +72,7 @@ To communicate with the database directly the API/Server I made uses mongoose.js
 | `GET`  Sort Enemies Destroyed H2L & L2H | /sort/enemiesDestroyed/H2L & /sort/enemiesDestroyed/L2H |
 | `GET`  get user profile | /get/profile |
 | `POST` add a new game to user game history | /update/user/games | 
-... + more
++ more
 
 ## Dependencies
 
