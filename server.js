@@ -84,13 +84,11 @@ let UserSchema = new Schema({
 });
 let User = mongoose.model('User', UserSchema); // USER ACCOUNT
 
-
-
 // Set up default mongoose connection
 mongoose.connect(mongoDBURL, { useNewUrlParser: true });
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.use('/main_menu.html', authenticate);
+app.use('/home.html', authenticate);
 app.use('/', express.static('./public_html'));
 
 /**
