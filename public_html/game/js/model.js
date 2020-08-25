@@ -28,7 +28,7 @@ class Model {
         this.totalLargeAsteroidsDestroyed = 0;
 
         // enemy stats
-        this.enemySpawnTicker = 1; // determines when ship is spawned (1 equals min 1)
+        this.enemySpawnTicker = 0; // determines when ship is spawned (1 equals min 1)
         this.enemiesSpawned = 0;
         this.enemiesDestroyed = 0;
         this.enemyArray = [];
