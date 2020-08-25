@@ -13,7 +13,7 @@
  * count down will continue to reset.
  * 
  */
-const port = 5000; // 80 for live http connections
+const port = 80; // 80 for live http connections
 const express = require('express');
 const mongoose = require('mongoose');
 const parser = require('body-parser');

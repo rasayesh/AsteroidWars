@@ -406,7 +406,7 @@ class Controller {
             model.enemySpawnTicker++;
             // add enemy ship to enemyShipArray
             let newEnemy = new Enemy();
-            newEnemy.health = model.round *= newEnemy.health; // enemy health increases as rounds increase
+            newEnemy.health *= model.round; // enemy health increases as rounds increase
             console.log('Enemy Health', newEnemy.health);
             model.enemyArray.push(newEnemy);
             model.enemiesSpawned++;
