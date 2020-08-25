@@ -233,12 +233,13 @@ class Controller {
 
     // checks if the player's ship has crashed into any of the asteroids or player has been shot by enemy spaceship
     updatePlayerDestroyed() {
+        // check if player destroyed by asteroid
         for (let i = 0; i < model.asteroidCount; i++) {
             let asteroid = model.asteroidArray[i];
-            let asteroidXRadiusRight = asteroid.x + (asteroid.width / 2.75);
-            let asteroidXRadiusLeft = asteroid.x - (asteroid.width / 2.75);
-            let asteroidYRadiusDown = asteroid.y + (asteroid.height / 2.75);
-            let asteroidYRadiusUp = asteroid.y - (asteroid.height / 2.75);
+            let asteroidXRadiusRight = asteroid.x + (asteroid.width / 2);
+            let asteroidXRadiusLeft = asteroid.x - (asteroid.width / 2);
+            let asteroidYRadiusDown = asteroid.y + (asteroid.height / 2);
+            let asteroidYRadiusUp = asteroid.y - (asteroid.height / 2);
             let spaceshipX = model.player.x + model.player.width / 2;
             let spaceshipY = model.player.y + model.player.height / 2;
             if ((spaceshipX <= asteroidXRadiusRight && spaceshipX >= asteroidXRadiusLeft) &&
