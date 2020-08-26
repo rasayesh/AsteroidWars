@@ -1,9 +1,9 @@
 # AsteroidWars
+
+[CLICK HERE TO PLAY ASTEROID WARS!](http://64.227.89.71/)
 <p float="left">
 <img src="https://github.com/rasayesh/AsteroidWars/blob/master/images/poster.PNG" >
 </p>
-
-[CLICK HERE TO PLAY ASTEROID WARS!](http://64.227.89.71/)
 
 ## Developer/s
 [Reza Asayesh](https://github.com/rasayesh)<br/>
